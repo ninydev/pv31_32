@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<header></header>
+
+<ul id="list">
+</ul>
+
+<footer></footer>
+
+<script>
+
+    const header = document.querySelector('header');
+    const footer = document.querySelector('footer');
+
+    header.textContent = 'Header Content';
+    footer.textContent = 'Footer Content';
+
+    const list = document.getElementById('list');
+
+
+    const laptops = [
+        {
+            title: "ASUS ROG Zephyrus G14",
+            description: "Компактный и мощный игровой ноутбук с процессором AMD Ryzen и видеокартой NVIDIA RTX 4060.",
+            image: "https://cdn.asus.com/images/product/rog-zephyrus-g14.jpg"
+        },
+        {
+            title: "Apple MacBook Air M2",
+            description: "Легкий и производительный ноутбук на базе чипа Apple M2 с отличной автономностью.",
+            image: "https://store.storeimages.cdn-apple.com/macbook-air-m2.jpg"
+        },
+        {
+            title: "Dell XPS 13 Plus",
+            description: "Ультратонкий ноутбук премиум-класса с OLED-дисплеем и минималистичным дизайном.",
+            image: "https://i.dell.com/xps-13-plus-laptop.jpg"
+        }
+    ];
+
+    laptops.forEach(item => {
+        let li = document.createElement('li');
+
+        let img = document.createElement('img');
+        img.src = item.image;
+        img.alt = item.title;
+
+        let title = document.createElement('h2');
+        title.textContent = item.title;
+
+        let description = document.createElement('p');
+        description.textContent = item.description;
+
+
+        li.appendChild(title);
+        li.appendChild(img);
+        li.appendChild(description);
+
+
+
+        li.addEventListener('click', (ev) => {
+            console.log(`You clicked on ${item}`);
+            ev.target.style.backgroundColor = 'yellow';
+        });
+
+        list.appendChild(li);
+    });
+
+</script>
+
+</body>
+</html>
