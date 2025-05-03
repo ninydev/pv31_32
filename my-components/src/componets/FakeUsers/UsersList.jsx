@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import UserItem from "./UserItem.jsx";
 
-const API_URL ='https://68161aff32debfe95dbd7598.mockapi.io/users'
+const API_URL = 'https://68161aff32debfe95dbd7598.mockapi.io/users'
 
 export default function UsersList() {
 
@@ -14,6 +14,10 @@ export default function UsersList() {
     // Змінна для помилки
     const [error, setError] = useState(null)
 
+    // pagination
+    const [page, setPage] = useState(1)
+    const [limit, setLimit] = useState(3)
+
 
     // Функція для отримання даних
 
@@ -23,8 +27,8 @@ export default function UsersList() {
         setError(null)
 
         try {
-            const response = await fetch(API_URL)
-            //const response = await fetch(`${API_URL}?limit=10&sortBy=name`)
+            // const response = await fetch(API_URL)
+            const response = await fetch(`${API_URL}?limit=${limit}&page=${page}&sortBy=name`)
             if (!response.ok) throw new Error('Failed to fetch data')
             const data = await response.json()
             setUsers(data)
@@ -35,17 +39,17 @@ export default function UsersList() {
         }
     }
 
-    const fetchUsersPromise =  () => {
+    const fetchUsersPromise = () => {
         setLoading(false)
         setError(null)
 
-        fetch(API_URL)
+        fetch(`${API_URL}?limit=${limit}&page=${page}&sortBy=name`)
             .then((response) => {
                 if (!response.ok) throw new Error('Failed to fetch data: ' + response?.statusText)
                 return response.json()
             })
             .then((data) => {
-                setUsers(data)
+                setUsers((prevUsers) => [...prevUsers, ...data])
             })
             .catch((error) => {
                 setError(error)
@@ -57,12 +61,21 @@ export default function UsersList() {
 
     // fetchUsersPromise()
 
+    // useEffect(() => {
+    //     fetchUsersPromise()
+    // }, [])
+
     useEffect(() => {
         fetchUsersPromise()
-    }, [])
+    }, [page, limit])
+
+    const loadNext = (e) => {
+        e.preventDefault();
+        setPage((prevPage) => prevPage + 1)
+    }
 
 
-    if (error){
+    if (error) {
         console.error(error)
         return (
             <div>Error: {error?.message}</div>
@@ -73,12 +86,13 @@ export default function UsersList() {
         <div>Loading...</div>
     )
 
-    return(<>
+    return (<>
         <ul>
             {users.map(user => (
                 <UserItem key={user.id} user={user}>
                 </UserItem>
             ))}
         </ul>
+        <button onClick={loadNext}>Next</button>
     </>)
 }
