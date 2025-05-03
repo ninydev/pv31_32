@@ -5,17 +5,14 @@ import './App.css'
 import ByFunctionList from "./componets/ByFunction/ByFunctionList.jsx";
 import ByAnonimList from "./componets/ByAnonim/ByAnonimList.jsx";
 import ByClassList from "./componets/ByClass/ByClassList.jsx";
+import UsersList from "./componets/FakeUsers/UsersList.jsx";
 
 function App() {
 
   return (
     <>
-      <h1> List ByClass</h1>
-      <ByClassList />
-      <h1> List ByAnonim </h1>
-        <ByAnonimList />
-      <h1> List ByFunction </h1>
-      <ByFunctionList />
+      <h1> List Users</h1>
+        <UsersList />
     </>
   )
 }
