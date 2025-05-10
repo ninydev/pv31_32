@@ -1,25 +1,41 @@
 
-function addMessage(ulMsg, msg) {
-    ulMsg.innerHTML += "<li>" + msg + "</li>";
-    console.log(msg);
+// function addMessage(ulMsg, msg) {
+//     ulMsg.innerHTML += "<li>" + msg + "</li>";
+//     console.log(msg);
+//
+// }
 
-}
-
-function createCoffee(turk, coffee, setCoffee, ulMsg) {
+function createCoffee(turk, coffee, setCoffee, addMessage) {
 
     if (!turk) {
-        addMessage(ulMsg, "Turk is not available");
+        addMessage("Turk is not available");
         return;
     }
 
     if (coffee < 200) {
-        addMessage(ulMsg, "Not enough coffee");
+        addMessage("Not enough coffee");
         return;
     }
 
     setCoffee(coffee - 200);
-    addMessage(ulMsg, "Coffee is ready");
+    addMessage("Coffee is ready");
 
 }
 
-export {createCoffee}
+function createEggs(fryingPan, eggs, setEggs, addMessage) {
+
+    if (!fryingPan) {
+        addMessage("Frying pan is not available");
+        return;
+    }
+
+    if (eggs < 2) {
+        addMessage( "Not enough eggs");
+        return;
+    }
+
+    setEggs(eggs - 2);
+    addMessage( "Eggs are ready");
+}
+
+export {createCoffee, createEggs}
