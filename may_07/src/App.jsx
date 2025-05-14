@@ -8,13 +8,14 @@ import MyKitchen from "./components/KitchenComponents/MyKitchen.jsx";
 import {InputOnly} from "./components/MyFirstForms/InputOnly.jsx";
 import {InputForms} from "./components/MyFirstForms/InputForms.jsx";
 import {InputPassword} from "./components/MyFirstForms/InputPassword.jsx";
+import {CatsPage} from "./components/CatsDb/CatsPage.jsx";
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-        <InputPassword/>
+        <CatsPage />
     </>
   )
 }
