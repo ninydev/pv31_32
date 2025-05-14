@@ -32,3 +32,14 @@ function isValidPassword(password1, password2) {
         isPasswordMatch(password1, password2)
     );
 }
+
+
+export {
+    isLengthValid,
+    hasUpperCase,
+    hasLowerCase,
+    hasNumber,
+    hasSpecialCharacter,
+    isPasswordMatch,
+    isValidPassword
+}
