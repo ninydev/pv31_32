@@ -12,13 +12,14 @@ import {CatsPage} from "./components/CatsDb/CatsPage.jsx";
 import {FirstAvatarUpload} from "./components/AvatarUpload/FirstAvatarUpload.jsx";
 import {CropperExample} from "./components/AvatarUpload/CropperExample.jsx";
 import {MyClock} from "./components/IntervalComponents/MyClock.jsx";
+import {RenderBack} from "./components/RenderByClass/RenderBack.jsx";
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-        <MyClock />
+        <RenderBack />
     </>
   )
 }
