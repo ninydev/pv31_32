@@ -9,13 +9,14 @@ import {InputOnly} from "./components/MyFirstForms/InputOnly.jsx";
 import {InputForms} from "./components/MyFirstForms/InputForms.jsx";
 import {InputPassword} from "./components/MyFirstForms/InputPassword.jsx";
 import {CatsPage} from "./components/CatsDb/CatsPage.jsx";
+import {FirstAvatarUpload} from "./components/AvatarUpload/FirstAvatarUpload.jsx";
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-        <CatsPage />
+        <FirstAvatarUpload />
     </>
   )
 }
