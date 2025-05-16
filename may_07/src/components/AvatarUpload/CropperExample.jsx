@@ -8,6 +8,25 @@ export const CropperExample = () => {
         'https://images.unsplash.com/photo-1599140849279-1014532882fe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1300&q=80',
     );
 
+    const sendToServer = (e) => {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append('file', image);
+
+        fetch('http://localhost:3000/upload', {
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+            setImage(data.url)
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
+
 
     const uploadImage = (e) => {
         e.preventDefault()
@@ -30,6 +49,7 @@ export const CropperExample = () => {
         <div className="cropper-container">
             <h2>Cropper Example</h2>
             <input type="file" onChange={uploadImage} />
+            <button onClick={sendToServer}>Upload</button>
         <Cropper
             src={image}
             onChange={onChange}
