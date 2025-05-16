@@ -10,12 +10,14 @@ import {InputForms} from "./components/MyFirstForms/InputForms.jsx";
 import {InputPassword} from "./components/MyFirstForms/InputPassword.jsx";
 import {CatsPage} from "./components/CatsDb/CatsPage.jsx";
 import {FirstAvatarUpload} from "./components/AvatarUpload/FirstAvatarUpload.jsx";
+import {CropperExample} from "./components/AvatarUpload/CropperExample.jsx";
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
+        <CropperExample />
         <FirstAvatarUpload />
     </>
   )
