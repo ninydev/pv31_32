@@ -1,4 +1,5 @@
 import {useState} from "react";
+import './style.css'
 
 export function FirstAvatarUpload() {
 
@@ -31,6 +32,7 @@ export function FirstAvatarUpload() {
             reader.onloadend = () => {
                 setAvatarBody(reader.result);
             };
+            reader.onerror = (error) => console.error('Error: ', error)
             reader.readAsDataURL(file);
         }
     }
@@ -45,11 +47,11 @@ export function FirstAvatarUpload() {
         <div>
             <div style={{width: "40%", float:"left"}} >
                 <h3> Server avatar </h3>
-                <img src={avatarUrl} alt="avatar" width="100px" />
+                <img src={avatarUrl} alt="avatar" className="avatar" />
             </div>
             <div style={{width: "40%", float:"left"}} >
                 <h3> Preview avatar </h3>
-                <img src={avatarBody} alt="avatar" width="100px" />
+                <img src={avatarBody} alt="avatar" className="avatar"  />
             </div>
         </div>
     </div>)
