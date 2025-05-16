@@ -3,7 +3,6 @@ import {useState} from "react";
 export function FirstAvatarUpload() {
 
     const [avatarUrl, setAvatarUrl] = useState(null);
-    const [avatarBody, setAvatarBody] = useState(null);
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -23,33 +22,17 @@ export function FirstAvatarUpload() {
         });
     }
 
-    const uploadImage = (e) => {
-        e.preventDefault()
-        const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setAvatarBody(reader.result);
-            };
-            reader.readAsDataURL(file);
-        }
-    }
-
     return(<div>
         <h1>First Avatar Upload</h1>
         <p>Upload your first avatar here.</p>
         <form onSubmit={onSubmit} encType="multipart/form-data">
-            <input onChange={uploadImage} type="file" accept="image/*" name="file" />
+            <input type="file" accept="image/*" name="file" />
             <input type="submit" value="Upload" />
         </form>
         <div>
-            <div style={{width: "40%", float:"left"}} >
+            <div width="50%">
                 <h3> Server avatar </h3>
                 <img src={avatarUrl} alt="avatar" width="100px" />
-            </div>
-            <div style={{width: "40%", float:"left"}} >
-                <h3> Preview avatar </h3>
-                <img src={avatarBody} alt="avatar" width="100px" />
             </div>
         </div>
     </div>)
