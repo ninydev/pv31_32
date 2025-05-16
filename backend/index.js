@@ -16,14 +16,29 @@ app.use((req, res, next) => {
 const port = 3000;
 
 // Configure multer for file uploads
-const upload = multer({ dest: 'uploads/' });
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/');
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname);
+    }
+});
+const upload = multer({ storage });
+
+// Serve static files from uploads directory
+app.use('/uploads', express.static('uploads'));
 
 // Route to handle file uploads
 app.post('/upload', upload.single('file'), (req, res) => {
     if (!req.file) {
-        return res.status(400).send('No file uploaded.');
+        return res.status(400).json({ error: 'No file uploaded.' });
     }
-    res.send(`File uploaded successfully: ${req.file.originalname}`);
+    const fileUrl = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
+    res.json({
+        url: fileUrl,
+        uploadedAt: new Date().toISOString()
+    });
 });
 
 // Start the server
