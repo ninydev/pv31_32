@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import {HomePage} from "../pages/HomePage.jsx";
 import {AboutPage} from "../pages/AboutPage.jsx";
 import {ContactPage} from "../pages/ContactPage.jsx";
+import {Error404Page} from "../pages/Error404Page.jsx";
 
 export function BadRouter() {
 
@@ -19,13 +20,19 @@ export function BadRouter() {
     const setPageFromLocation = () => {
         const path = window.location.pathname.replace('/', '');
 
+        console.log(path);
+
         setTimeout(() => {
-            if (['home', 'about', 'contact'].includes(path)) {
-                setCurrentPage(path);
-            } else {
+
+            if (path === '') {
                 setCurrentPage('home');
             }
-        }, 4000)
+            else if (['about', 'contact'].includes(path)) {
+                setCurrentPage(path);
+            } else {
+                setCurrentPage('error404');
+            }
+        }, 40)
 
 
     };
@@ -57,7 +64,7 @@ export function BadRouter() {
                         case 'contact':
                             return <ContactPage />;
                         default:
-                            return <h1>404 Not Found</h1>;
+                            return <Error404Page />;
                     }
                 })()
             }
