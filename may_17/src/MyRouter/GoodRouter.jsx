@@ -1,4 +1,4 @@
-import {Link, Route, BrowserRouter as Router, Routes} from "react-router";
+import {Link, Route, BrowserRouter, Routes} from "react-router";
 import {HomePage} from "../pages/HomePage.jsx";
 import {AboutPage} from "../pages/AboutPage.jsx";
 import {ContactPage} from "../pages/ContactPage.jsx";
@@ -8,13 +8,14 @@ export function GoodRouter() {
     return (
         <>
             <div>
-                <Router>
+                <BrowserRouter>
 
                     <div>
                         <h1> Good Router </h1>
-                        <Link to="/">Home</Link>
-                        <Link to="/about">About</Link>
-                        <Link to="/contact">Contact</Link>
+                        <Link to="/">Home</Link> |
+                        <Link to="/about">About</Link> |
+                        <Link to="/contact">Contact</Link> |
+                        <a href="/">Home</a>
                     </div>
 
                     <Routes>
@@ -23,7 +24,7 @@ export function GoodRouter() {
                         <Route path="/contact" element={<ContactPage/>}/>
                         <Route path="*" element={<Error404Page/>}/>
                     </Routes>
-                </Router>
+                </BrowserRouter>
             </div>
         </>
     )
