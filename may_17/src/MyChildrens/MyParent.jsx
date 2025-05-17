@@ -1,9 +1,9 @@
-export function MyParent({children}) {
+export function MyParent({children, changeData}) {
 
     return(
         <div>
             <h1>My Parent</h1>
-            <p>My Parent</p>
+            <button onClick={changeData}>Change Data</button>
             <ul>
             {children}
             </ul>

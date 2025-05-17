@@ -1,5 +1,6 @@
 import {MyChild} from "./MyChild.jsx";
 import {MyParent} from "./MyParent.jsx";
+import {MyDataProvider} from "./MyDataProvider.jsx";
 
 export function MyTreePage() {
 
@@ -7,11 +8,14 @@ export function MyTreePage() {
         <div>
             <h1>My Tree Page</h1>
             <p>My Tree Page</p>
-            <MyParent>
-                <MyChild />
-                <MyChild />
-                <MyChild />
-            </MyParent>
+            <MyDataProvider>
+                <MyParent>
+                    <MyChild />
+                    <MyChild />
+                    <MyChild />
+                </MyParent>
+            </MyDataProvider>
+
         </div>
     )
 
