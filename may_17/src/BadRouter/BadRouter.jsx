@@ -9,16 +9,25 @@ export function BadRouter() {
 
     const changePage = (page) => {
         setCurrentPage(page);
-        window.history.pushState({}, '', `/${page}`);
+        if (page === 'home') {
+            window.history.pushState({}, '', '/');
+        } else {
+            window.history.pushState({}, '', `/${page}`);
+        }
     }
 
     const setPageFromLocation = () => {
         const path = window.location.pathname.replace('/', '');
-        if (['home', 'about', 'contact'].includes(path)) {
-            setCurrentPage(path);
-        } else {
-            setCurrentPage('home');
-        }
+
+        setTimeout(() => {
+            if (['home', 'about', 'contact'].includes(path)) {
+                setCurrentPage(path);
+            } else {
+                setCurrentPage('home');
+            }
+        }, 4000)
+
+
     };
 
     useEffect(() => {
