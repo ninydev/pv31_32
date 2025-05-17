@@ -24,6 +24,7 @@ export function GoodRouter() {
                         <Route path="/contact" element={<ContactPage/>}/>
                         <Route path="*" element={<Error404Page/>}/>
                     </Routes>
+
                 </BrowserRouter>
             </div>
         </>
