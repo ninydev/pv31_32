@@ -13,7 +13,7 @@ export function CreateColor() {
         console.log(data);
         create(data);
         event.target.reset();
-        navigate("/colors");
+        navigate("/colors");// <Link to="/colors">Back</Link>
     }
 
     return(<>
