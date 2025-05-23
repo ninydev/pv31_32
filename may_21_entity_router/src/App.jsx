@@ -8,6 +8,7 @@ import {CreateColor} from "./components/ColorModule/CreateColor.jsx";
 import {ReadColor} from "./components/ColorModule/ReadColor.jsx";
 import {DeleteColor} from "./components/ColorModule/DeleteColor.jsx";
 import {UpdateColor} from "./components/ColorModule/UpdateColor.jsx";
+import SomeBigEmailComponent from "./components/MyFirstContext/EmailExample/SomeBigEmailComponent.jsx";
 
 function App() {
 
@@ -20,11 +21,12 @@ function App() {
                 <ul>
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/colors">Colors</Link></li>
+                    <li><Link to="/context_start">Context Start</Link></li>
                 </ul>
             </nav>
             <Routes>
                 <Route path="/" element={<HomePage  />}/>
-
+                <Route path="/context_start" element={<SomeBigEmailComponent  />}/>
                 <Route path="/colors" element={<ReadAllColors  />}/>
                 <Route path="/colors/create" element={<CreateColor  />}/>
                 <Route path="/colors/read/:id" element={<ReadColor  />}/>
