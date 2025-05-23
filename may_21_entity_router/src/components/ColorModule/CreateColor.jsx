@@ -6,7 +6,7 @@ import { useNavigate } from "react-router";
 export function CreateColor() {
 
     const navigate = useNavigate();
-    const hendlerSubmit = (event) => {
+    const handlerSubmit = (event) => {
         event.preventDefault();
         const formData = new FormData(event.target);
         const data = Object.fromEntries(formData.entries());
@@ -20,7 +20,7 @@ export function CreateColor() {
         <h2>Create Color</h2>
         <Link to="/colors">Back</Link>
         <hr/>
-        <form onSubmit={hendlerSubmit}>
+        <form onSubmit={handlerSubmit}>
             <label>
                 Name:
                 <input type="text" name="name" />
