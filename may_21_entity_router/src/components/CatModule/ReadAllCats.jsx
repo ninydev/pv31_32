@@ -7,16 +7,12 @@ export const ReadAllCats = () => {
     const newOrder = (e) => {
         e.preventDefault();
         const order = e.target.value;
-        // console.log("Order: " , order);
-        // cats.doSetOrder(order);
         cats.setOrder(order);
     }
 
     const newSort = (e) => {
         e.preventDefault();
         const sortBy = e.target.value;
-        // console.log("Sort by: " , sortBy);
-        // cats.doSetSortBy(sortBy);
         cats.setSortBy(sortBy);
     }
 
@@ -41,6 +37,11 @@ export const ReadAllCats = () => {
                     <option value="desc">Descending</option>
                 </select>
             </label></div>
+
+            <div>
+                <label>Page: {cats.page}</label> |
+                <label>Limit: {cats.limit}</label>
+            </div>
 
             <table width={"100%"} style={ {borderCollapse: "collapse"}}>
                 <thead>
