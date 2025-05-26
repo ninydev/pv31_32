@@ -11,45 +11,53 @@ import {UpdateColor} from "./components/ColorModule/UpdateColor.jsx";
 import SomeBigEmailComponent from "./components/MyFirstContext/EmailExample/SomeBigEmailComponent.jsx";
 import {EmailProvider} from "./components/MyFirstContext/EmailExample/EmailContext.jsx";
 import {OtherEmailComponent} from "./components/MyFirstContext/EmailExample/OtherEmailComponent.jsx";
+import {CatsProvider} from "./components/CatModule/CatsContext.jsx";
+import {ReadAllCats} from "./components/CatModule/ReadAllCats.jsx";
 
 function App() {
 
     return (
         <>
-            <header><h1>ColorDB</h1></header>
-            <BrowserRouter>
+            <CatsProvider>
+                <header><h1>ColorDB</h1></header>
+                <BrowserRouter>
 
-                <nav>
-                    <ul>
-                        <li><Link to="/">Home</Link></li>
-                        <li><Link to="/colors">Colors</Link></li>
-                        <li><Link to="/context_start">Context Start</Link></li>
-                        <li><Link to="/some/other">Context Other</Link></li>
-                    </ul>
-                </nav>
-                <Routes>
-                    <Route path="/" element={<HomePage/>}/>
-                    <Route path="/colors" element={<ReadAllColors/>}/>
-                    <Route path="/colors/create" element={<CreateColor/>}/>
-                    <Route path="/colors/read/:id" element={<ReadColor/>}/>
-                    <Route path="/colors/update/:id" element={<UpdateColor/>}/>
-                    <Route path="/colors/delete/:id" element={<DeleteColor/>}/>
+                    <nav>
+                        <ul>
+                            <li><Link to="/">Home</Link></li>
+                            <li><Link to="/cats">Cats</Link></li>
+                            <li><Link to="/colors">Colors</Link></li>
+                            <li><Link to="/context_start">Context Start</Link></li>
+                            <li><Link to="/some/other">Context Other</Link></li>
+                        </ul>
+                    </nav>
+                    <Routes>
+                        <Route path="/" element={<HomePage/>}/>
 
-                    <Route path="/some/other" element={
-                        <EmailProvider key="123">
-                            <OtherEmailComponent/>
-                        </EmailProvider>
-                    }/>
-                    <Route path="/context_start" element={
-                        <EmailProvider key="321">
-                            <SomeBigEmailComponent/>
-                        </EmailProvider>
-                    }/>
-                    <Route path="*" element={<Error404Page/>}/>
+                        <Route path="/cats" element={< ReadAllCats />}/>
 
-                </Routes>
+                        <Route path="/colors" element={<ReadAllColors/>}/>
+                        <Route path="/colors/create" element={<CreateColor/>}/>
+                        <Route path="/colors/read/:id" element={<ReadColor/>}/>
+                        <Route path="/colors/update/:id" element={<UpdateColor/>}/>
+                        <Route path="/colors/delete/:id" element={<DeleteColor/>}/>
 
-            </BrowserRouter>
+                        <Route path="/some/other" element={
+                            <EmailProvider key="123">
+                                <OtherEmailComponent/>
+                            </EmailProvider>
+                        }/>
+                        <Route path="/context_start" element={
+                            <EmailProvider key="321">
+                                <SomeBigEmailComponent/>
+                            </EmailProvider>
+                        }/>
+                        <Route path="*" element={<Error404Page/>}/>
+
+                    </Routes>
+
+                </BrowserRouter>
+            </CatsProvider>
         </>
     )
 }
