@@ -14,15 +14,27 @@ export const CatsProvider = ({ children }) => {
   // Error state for handling API errors
   const [error, setError] = useState(null);
 
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(10);
+  const [sortBy, setSortBy] = useState('name');
+  const [order, setOrder] = useState('desc');
+
+
+
   // Fetch all cats from the API
   const fetchCats = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(API_URL);
+      const searchParams
+          = new URLSearchParams({page, limit, sortBy, order});
+
+      console.log(API_URL + `?${searchParams.toString()}`);
+      const response = await fetch(API_URL + `?${searchParams.toString()}`);
       if (!response.ok) {
         throw new Error(`Error fetching cats: ${response.statusText}`);
       }
+      // console.log('Response:', response);
       const data = await response.json();
       setCats(data);
     } catch (err) {
@@ -31,7 +43,7 @@ export const CatsProvider = ({ children }) => {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [page, limit, sortBy, order]);
 
   // Fetch a single cat by ID
   const fetchCatById = useCallback(async (id) => {
@@ -137,8 +149,9 @@ export const CatsProvider = ({ children }) => {
 
   // Load cats when the component mounts
   useEffect(() => {
+    console.log('CatsContext - useEffect');
     fetchCats();
-  }, [fetchCats]);
+  }, [ page, limit, sortBy, order]);
 
   // Create the context value object with all the methods and state
   const catsContextValue = {
@@ -152,7 +165,10 @@ export const CatsProvider = ({ children }) => {
     createCat,
     updateCat,
     deleteCat,
+    // Pagination and sorting
+    page, limit, sortBy, order,
     // Helper methods
+    setPage, setLimit, setSortBy, setOrder,
     clearError: () => setError(null),
   };
 

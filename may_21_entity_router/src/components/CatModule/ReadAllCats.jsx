@@ -4,12 +4,44 @@ export const ReadAllCats = () => {
 
     const cats = useCats();
 
+    const newOrder = (e) => {
+        e.preventDefault();
+        const order = e.target.value;
+        // console.log("Order: " , order);
+        // cats.doSetOrder(order);
+        cats.setOrder(order);
+    }
+
+    const newSort = (e) => {
+        e.preventDefault();
+        const sortBy = e.target.value;
+        // console.log("Sort by: " , sortBy);
+        // cats.doSetSortBy(sortBy);
+        cats.setSortBy(sortBy);
+    }
+
+
 
 
     return(
         <div>
             <h1>Read All Cats</h1>
             <p>This component will display all cats.</p>
+            <div><label>Sort By:
+                <select onChange={newSort}>
+                    <option value="id">ID</option>
+                    <option value="name">Name</option>
+                    <option value="breed">Breed</option>
+                </select>
+            </label></div>
+
+            <div><label>Order:
+                <select onChange={newOrder}>
+                    <option value="asc">Ascending</option>
+                    <option value="desc">Descending</option>
+                </select>
+            </label></div>
+
             <table width={"100%"} style={ {borderCollapse: "collapse"}}>
                 <thead>
                 <tr>
