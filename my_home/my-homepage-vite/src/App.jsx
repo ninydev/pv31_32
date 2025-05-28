@@ -4,14 +4,13 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import {MyRouteSystem} from "./MyRouteSystem.jsx";
 import {RectRouteSystem} from "./RectRouteSystem.jsx";
+import {CatsPage} from "./pages/CatsPage.jsx";
 
 function App() {
 
   return (
     <>
-        <MyRouteSystem />
-        <hr />
-        <RectRouteSystem />
+        <CatsPage />
     </>
   )
 }
