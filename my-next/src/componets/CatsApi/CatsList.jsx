@@ -10,7 +10,7 @@ export function CatsList() {
     // Fetch cats data when the component mounts
     useEffect(() => {
         fetchCats();
-    }, [fetchCats]);
+    }, []);
 
     if (loading) {
         return (
