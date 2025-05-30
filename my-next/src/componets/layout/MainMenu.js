@@ -12,6 +12,9 @@ export default function MainMenu() {
         <Link href="/contact" className="hover:underline">
             Contact
         </Link>
+        <Link href="/cats" className="hover:underline">
+            Cats
+        </Link>
         </nav>
     );
 }
