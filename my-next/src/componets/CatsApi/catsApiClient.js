@@ -1,7 +1,8 @@
 'use server';
 
-const CATS_API_KEY = 'live_0HN8uL4Aeoujin4RY2uUVi12QRbJIAC97LL9YbPJ93QKJPK7wEELYmI13aJiJmUU';
-const CATS_BASE_URL = 'https://api.thecatapi.com/v1/images/search';
+// Access environment variables (only available on the server)
+const CATS_API_KEY = process.env.CATS_API_KEY;
+const CATS_BASE_URL = process.env.CATS_BASE_URL;
 
 export async function catsApiClient(searchParams = {}) {
     // Set default values for searchParams if not provided
@@ -28,7 +29,7 @@ export async function catsApiClient(searchParams = {}) {
     if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
     }
-    console.log(response);
+    console.log("Server action called with searchParams:", searchParams);
 
     return response.json();
 }

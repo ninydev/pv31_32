@@ -17,8 +17,11 @@ export function CatsProvider({ children }) {
         setLoading(true);
         setError(null);
 
+        searchParams.limit = 10;
+
         try {
             // Call the server action to fetch cats
+            console.log("Client Side ", searchParams);
             const response = await catsApiClient(searchParams);
             setCats(response);
         } catch (err) {

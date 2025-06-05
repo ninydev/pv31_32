@@ -21,7 +21,7 @@ export function CatsListItem({ cat }) {
                     fill
                     style={{ objectFit: 'cover' }}
                     sizes="200px"
-                    onLoadingComplete={() => setIsLoading(false)}
+                    onLoad={() => setIsLoading(false)}
                 />
             </div>
             <p className="text-sm">
