@@ -10,7 +10,7 @@ Car car1 = new Car();
 
 Car car2 = CarBuilder.createCar();
 
-CatWithBuilder cat = new CatWithBuilder()
+CatWithBuilder cat = CatWithBuilder.create()
     .SetName("Whiskers")
     .SetAge(3)
     .SetColor("Tabby");

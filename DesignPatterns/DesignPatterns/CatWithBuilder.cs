@@ -29,4 +29,9 @@ public class CatWithBuilder
         return this;
     }
     
+    public static CatWithBuilder create()
+    {
+        return new CatWithBuilder();
+    }
+    
 }
