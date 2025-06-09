@@ -1,18 +1,16 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using DesignPatterns;
+using DesignPatterns.NotificationSystem;
 
-Console.WriteLine("Hello, World!");
+// NotificationSystem notificationSystem = new NotificationSystem();
 
-ConnectToRabbitMq conn =  ConnectToRabbitMq.Instance; //new ConnectToRabbitMq();
+NotificationSystem notificationSystem = NotificationSystem.Instance
+    .AddNotificationChannel(NotificationChannelContainer.createNotificationChannel(NotificationChannelTypesEnum.Email))
+    .AddNotificationChannel(NotificationChannelContainer.createNotificationChannel(NotificationChannelTypesEnum.Sms));
 
-Car car1 = new Car();
+NotificationModel notification = new NotificationModel("Test Notification", "This is a test message for the notification system.");
+notificationSystem.Notify(notification);
 
-Car car2 = CarBuilder.createCar();
-
-CatWithBuilder cat = CatWithBuilder.create()
-    .SetName("Whiskers")
-    .SetAge(3)
-    .SetColor("Tabby");
 
 
