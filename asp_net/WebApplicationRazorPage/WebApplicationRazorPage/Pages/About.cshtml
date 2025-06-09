@@ -1,0 +1,32 @@
+@page
+
+@{
+    ViewData["Title"] = "About";
+}
+
+
+<div>
+    <h2> About page</h2>
+    <p> Text About </p>
+
+    <p> Server Time @DateTime.Now.ToString("HH:mm:ss")</p>
+    <p> Client time <span id="curTime"></span></p>
+</div>
+
+@section Scripts {
+    <script>
+        const updateTime = () => {
+            const now = new Date();
+            const formattedTime = now.toLocaleTimeString('en-US', {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            });
+            document.getElementById('curTime').textContent = formattedTime;
+        };
+
+        setInterval(updateTime, 1000);
+    </script>
+}
+
