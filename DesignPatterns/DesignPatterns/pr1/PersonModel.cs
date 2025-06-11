@@ -1,7 +1,19 @@
 namespace DesignPatterns.pr1;
 
-public class PersonModel
+public class PersonModel : IPrototype<PersonModel>
 {
+    
+    public PersonModel Clone()
+    {
+        return new PersonModel
+        {
+            Name = this.Name,
+            Surname = this.Surname,
+            BirthDate = this.BirthDate,
+            Email = this.Email,
+            PhoneNumber = this.PhoneNumber
+        };
+    }
     
     private IPersonEcho _echo;
     
