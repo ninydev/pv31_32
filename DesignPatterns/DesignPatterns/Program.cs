@@ -1,13 +1,15 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using DesignPatterns;
+using DesignPatterns.di_11_06.decorator_example;
+using DesignPatterns.di_11_06.facade_example;
 using DesignPatterns.di_11_06.gameVer;
 using DesignPatterns.di_11_06.newVer;
 using DesignPatterns.NotificationSystem;
 using DesignPatterns.pr1;
 
 
-GamePad.run();
+FacadeExample.run();
 
 // BaseAnimal dog = new BaseAnimal(new SayMethod("Woof!"));
 // BaseAnimal cat = new BaseAnimal(new SayMethod("Meow!"));
