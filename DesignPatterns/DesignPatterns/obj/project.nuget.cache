@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "yU3wmnP7Zvk=",
+  "dgSpecHash": "hmHZfU0uTbo=",
   "success": true,
   "projectFilePath": "/home/keeper/ItStep/pv31_32/DesignPatterns/DesignPatterns/DesignPatterns.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/home/keeper/.nuget/packages/ninject/4.0.0-beta.1/ninject.4.0.0-beta.1.nupkg.sha512"
+  ],
   "logs": []
 }

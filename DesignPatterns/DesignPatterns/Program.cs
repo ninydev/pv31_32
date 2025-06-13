@@ -5,11 +5,14 @@ using DesignPatterns.di_11_06.decorator_example;
 using DesignPatterns.di_11_06.facade_example;
 using DesignPatterns.di_11_06.gameVer;
 using DesignPatterns.di_11_06.newVer;
+using DesignPatterns.di_13_06;
 using DesignPatterns.NotificationSystem;
 using DesignPatterns.pr1;
 
+// MyBigProgram.run();
+GamePad1306_ninject.run();
 
-FacadeExample.run();
+// FacadeExample.run();
 
 // BaseAnimal dog = new BaseAnimal(new SayMethod("Woof!"));
 // BaseAnimal cat = new BaseAnimal(new SayMethod("Meow!"));

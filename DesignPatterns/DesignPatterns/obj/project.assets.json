@@ -1,11 +1,45 @@
 {
   "version": 3,
   "targets": {
-    "net9.0": {}
+    "net9.0": {
+      "Ninject/4.0.0-beta.1": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/Ninject.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Ninject.dll": {
+            "related": ".xml"
+          }
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Ninject/4.0.0-beta.1": {
+      "sha512": "nLUSEPhzXRYrw5PKB6wQIOTWN2dgvlvjjzr1QaQC1Bq8J/ca2wKdURoUWwFwAuQjG4hxP7aEeBscmPCF/OgYBQ==",
+      "type": "package",
+      "path": "ninject/4.0.0-beta.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net46/Ninject.dll",
+        "lib/net46/Ninject.xml",
+        "lib/net6.0/Ninject.dll",
+        "lib/net6.0/Ninject.xml",
+        "lib/netstandard2.0/Ninject.dll",
+        "lib/netstandard2.0/Ninject.xml",
+        "ninject.4.0.0-beta.1.nupkg.sha512",
+        "ninject.nuspec"
+      ]
+    }
+  },
   "projectFileDependencyGroups": {
-    "net9.0": []
+    "net9.0": [
+      "Ninject >= 4.0.0-beta.1"
+    ]
   },
   "packageFolders": {
     "/home/keeper/.nuget/packages/": {}
@@ -49,6 +83,12 @@
     "frameworks": {
       "net9.0": {
         "targetAlias": "net9.0",
+        "dependencies": {
+          "Ninject": {
+            "target": "Package",
+            "version": "[4.0.0-beta.1, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",
