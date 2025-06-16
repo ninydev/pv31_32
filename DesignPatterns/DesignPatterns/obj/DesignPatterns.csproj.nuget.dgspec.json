@@ -44,6 +44,10 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "Autofac": {
+              "target": "Package",
+              "version": "[8.3.0, )"
+            },
             "Ninject": {
               "target": "Package",
               "version": "[4.0.0-beta.1, )"

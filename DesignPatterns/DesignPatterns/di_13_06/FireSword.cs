@@ -1,6 +1,6 @@
 namespace DesignPatterns.di_13_06;
 
-public class FireSword :ISword
+public class FireSword :ISword, IFireSword
 {
     public FireSword()
     {

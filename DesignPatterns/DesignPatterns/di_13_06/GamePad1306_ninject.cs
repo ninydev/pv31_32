@@ -12,6 +12,9 @@ public class GamePad1306_ninject
         
         // Регистрация зависимостей
         kernel.Bind<ISword>().To<FireSword>(); // Можно заменить на FireSword для тестирования
+        kernel.Bind<IIceSword>().To<IceSword>();
+        kernel.Bind<IFireSword>().To<FireSword>();
+        
         // Получаем экземпляр Paladin с внедренной зависимостью
         Paladin paladin = kernel.Get<Paladin>();
         Barbarian barbarian = kernel.Get<Barbarian>();
@@ -21,6 +24,9 @@ public class GamePad1306_ninject
         
         paladin.Fight();
         barbarian.Fight();
+        
+        paladin.ToIceSword(kernel.Get<IIceSword>());
+        paladin.Fight();
         
         
         // Paladin paladin = new Paladin(new FireSword());

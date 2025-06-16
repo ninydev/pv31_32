@@ -10,7 +10,7 @@ using DesignPatterns.NotificationSystem;
 using DesignPatterns.pr1;
 
 // MyBigProgram.run();
-GamePad1306_ninject.run();
+GamePad1306_autofac.run();
 
 // FacadeExample.run();
 
