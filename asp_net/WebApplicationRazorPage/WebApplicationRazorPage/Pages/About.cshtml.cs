@@ -6,5 +6,6 @@ public class About : PageModel
 {
     public void OnGet()
     {
+        ViewData["MessageData"] = "Hello ViewData from About Page!";
     }
 }
