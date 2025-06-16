@@ -1,0 +1,31 @@
+@{
+    ViewData["Title"] = "Form Page";
+}
+
+
+<div>
+    <h2> Form page</h2>
+    
+    <div>
+        <h2>Form page</h2>
+        <div>
+            @ViewData["MessageData"]
+        </div>
+        <form asp-action="SendFeedback" method="post">
+            <div>
+                <label for="Name">Name:</label>
+                <input type="text" id="Name" name="Name" required value="@ViewData["formData"]"/>
+            </div>
+            <div>
+                <label for="Email">Email:</label>
+                <input type="email" id="Email" name="Email" required value="@ViewData["Email"]" />
+            </div>
+            <div>
+                <label for="Message">Message:</label>
+                <textarea id="Message" name="Message" required>@ViewData["Message"]</textarea>
+            </div>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    
+</div>

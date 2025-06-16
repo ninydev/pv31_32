@@ -12,6 +12,19 @@ public class ContactController : Controller
         return View();
     }
 
+    public IActionResult ByIdFromPath(int id)
+    {
+        ViewData ["MessageData"] = $"Hello ViewData from ContactController with ID: {id}!";
+        return View("Index");
+    }
+    
+    public IActionResult ByNameAndAge(string name, int age)
+    {
+        ViewData["MessageData"] = $"Name: {name}, Age: {age}";
+        return View("Index");
+    }
+    
+
 
     // public string GetString()
     // {
