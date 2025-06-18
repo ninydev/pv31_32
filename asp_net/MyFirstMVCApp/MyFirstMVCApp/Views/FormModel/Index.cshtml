@@ -1,0 +1,45 @@
+@model MyFirstMVCApp.Models.FormViewModel
+@using System.ComponentModel.DataAnnotations
+@{
+    ViewData["Title"] = "Form Model";
+    string GetDescription(string propertyName)
+    {
+        var prop = typeof(MyFirstMVCApp.Models.FormViewModel).GetProperty(propertyName);
+        var attr = prop.GetCustomAttributes(typeof(DisplayAttribute), false).FirstOrDefault() as DisplayAttribute;
+        return attr?.Description;
+    }
+}
+
+<div>
+    <h2>Form Model</h2>
+    <div>
+        @ViewData["MessageData"]
+    </div>
+    <form asp-action="SendFeedback" method="post">
+        <div>
+            <label asp-for="Name"></label><br/>
+            <span class="field-description">@GetDescription("Name")</span><br/>
+            <input asp-for="Name" /><br/>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div>
+            <label asp-for="Age"></label><br/>
+            <span class="field-description">@GetDescription("Age")</span><br/>
+            <input asp-for="Age" /><br/>
+            <span asp-validation-for="Age" class="text-danger"></span>
+        </div>
+        <div>
+            <label asp-for="Email"></label><br/>
+            <span class="field-description">@GetDescription("Email")</span><br/>
+            <input asp-for="Email" /><br/>
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div>
+            <label asp-for="Message"></label><br/>
+            <span class="field-description">@GetDescription("Message")</span><br/>
+            <textarea asp-for="Message"></textarea><br/>
+            <span asp-validation-for="Message" class="text-danger"></span>
+        </div>
+        <button type="submit">Send</button>
+    </form>
+</div>
