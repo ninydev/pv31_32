@@ -11,6 +11,9 @@ public class FormEntity
   [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
   [Column("Id")]
   public int Id { get; set; }
+  
+  [Column("MyThinkAboutUser", TypeName = "nvarchar(256)")]
+  public string MyThinkAboutUser { get; set; }
 
   [Required]
   [StringLength(50)]

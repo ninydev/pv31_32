@@ -1,0 +1,33 @@
+@model IEnumerable<MyFirstMVCApp.Entities.CarEntity>
+
+
+<div>
+    <h2>All Cars</h2>
+    
+    <a asp-action="Create"> Add </a>
+
+    <table class="table">
+    <thead>
+    <tr>
+        <th>Model Name</th>
+        <th>Manufacturer</th>
+        <th>Year</th>
+        <th>Color</th>
+        <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var car in Model)
+    {
+        <tr>
+            <td>@car.ModelName</td>
+            <td>@car.Manufacturer</td>
+            <td>@car.Year</td>
+            <td>@car.Color</td>
+            <td>@car.Price.ToString("C")</td>
+        </tr>
+    }
+    </tbody>
+    <tfoot></tfoot>
+</table>
+</div>

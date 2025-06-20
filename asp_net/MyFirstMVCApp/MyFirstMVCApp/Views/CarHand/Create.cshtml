@@ -1,0 +1,34 @@
+@model MyFirstMVCApp.Entities.CarEntity
+
+
+<div>
+    <h2>Form Model</h2>
+    <form asp-action="Create" method="post">
+        <div>
+            <label asp-for="ModelName"></label><br/>
+            <input asp-for="ModelName" /><br/>
+            <span asp-validation-for="ModelName" class="text-danger"></span>
+        </div>
+        <div>
+            <label asp-for="Manufacturer"></label><br/>
+            <input asp-for="Manufacturer" /><br/>
+            <span asp-validation-for="Manufacturer" class="text-danger"></span>
+        </div>
+        <div>
+            <label asp-for="Year"></label><br/>
+            <input asp-for="Year" /><br/>
+            <span asp-validation-for="Year" class="text-danger"></span>
+        </div>
+        <div>
+            <label asp-for="Color"></label><br/>
+            <input asp-for="Color" /><br/>
+            <span asp-validation-for="Color" class="text-danger"></span>
+        </div>
+        <div>
+            <label asp-for="Price"></label><br/>
+            <input asp-for="Price" /><br/>
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+        <button type="submit">Send</button>
+    </form>
+</div>
