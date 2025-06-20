@@ -11,6 +11,8 @@ public class CarEntity
     [Column("Id")]
     public int Id { get; set; }
     
+    [Required]
+    [StringLength(50, MinimumLength = 2, ErrorMessage = "Model must be between 2 and 50 characters.")]
     public string ModelName { get; set; } = string.Empty;
     public string Manufacturer { get; set; } = string.Empty;
     public int Year { get; set; }

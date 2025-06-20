@@ -1,0 +1,16 @@
+@model MyFirstMVCApp.Entities.CarEntity
+
+<a asp-action="Index"> Back </a>
+
+<div>
+    <h2>Car Details</h2>
+    <div>
+        <strong>Model Name:</strong> @Model.ModelName
+    </div>
+    <div>
+        <strong>Manufacturer:</strong> @Model.Manufacturer
+    </div>
+    <div>
+        <strong>Year</strong> @Model.Year
+    </div>
+</div>

@@ -14,6 +14,7 @@
         <th>Year</th>
         <th>Color</th>
         <th>Price</th>
+        <th> Actions </th>
     </tr>
     </thead>
     <tbody>
@@ -25,6 +26,9 @@
             <td>@car.Year</td>
             <td>@car.Color</td>
             <td>@car.Price.ToString("C")</td>
+            <td>
+                <a asp-action="ReadById" asp-route-id="@car.Id">View</a> |
+            </td>
         </tr>
     }
     </tbody>

@@ -25,6 +25,7 @@ public class CarHandController : Controller
         return View(newCar);
     }
     
+    
     /// <summary>
     /// Мне нужен метод, который будет обрабатывать POST-запрос на создание нового автомобиля.
     /// Я должен отправить данные формы на сервер, и если данные валидны,
@@ -51,6 +52,7 @@ public class CarHandController : Controller
         return View(newCar);
     }
     
+    
     /// <summary>
     /// Мне так же нужно 2 запроса на READ:
     /// - один для получения списка всех автомобилей,
@@ -61,6 +63,16 @@ public class CarHandController : Controller
     public IActionResult Index()
     {
         return View(_dbContext.Cars.ToList());
+    }
+    
+    /// <summary>
+    /// Построение страницы с информацией об автомобиле по ID
+    /// </summary>
+    /// <param name="id">ID автомобиля</param>
+    /// <returns>Страница с 1 автомобилем</returns>
+    public IActionResult ReadById(int id)
+    {
+        return View(_dbContext.Cars.FirstOrDefault(c => c.Id == id));
     }
     
     
