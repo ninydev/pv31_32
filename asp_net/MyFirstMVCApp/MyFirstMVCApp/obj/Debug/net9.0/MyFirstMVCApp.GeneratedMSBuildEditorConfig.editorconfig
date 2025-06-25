@@ -62,6 +62,26 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/keeper/ItStep/pv31_32/asp_net/MyFirstMVCApp/MyFirstMVCApp/Views/Manufacturer/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWFudWZhY3R1cmVyL0NyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/keeper/ItStep/pv31_32/asp_net/MyFirstMVCApp/MyFirstMVCApp/Views/Manufacturer/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWFudWZhY3R1cmVyL0RlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/keeper/ItStep/pv31_32/asp_net/MyFirstMVCApp/MyFirstMVCApp/Views/Manufacturer/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWFudWZhY3R1cmVyL0RldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/keeper/ItStep/pv31_32/asp_net/MyFirstMVCApp/MyFirstMVCApp/Views/Manufacturer/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWFudWZhY3R1cmVyL0VkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/keeper/ItStep/pv31_32/asp_net/MyFirstMVCApp/MyFirstMVCApp/Views/Manufacturer/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWFudWZhY3R1cmVyL0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/keeper/ItStep/pv31_32/asp_net/MyFirstMVCApp/MyFirstMVCApp/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

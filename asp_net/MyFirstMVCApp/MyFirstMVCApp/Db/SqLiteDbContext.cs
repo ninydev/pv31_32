@@ -5,6 +5,8 @@ namespace MyFirstMVCApp.Db;
 
 public class SqLiteDbContext : DbContext
 {
+    public DbSet<ManufacturerEntity> Manufacturers { get; set; }
+    
     public DbSet<FormEntity> Forms { get; set; }
     public DbSet<CarEntity> Cars { get; set; }
     
