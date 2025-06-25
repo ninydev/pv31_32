@@ -7,9 +7,11 @@ namespace MyFirstMVCApp.Controllers;
 public class CarHandController : Controller
 {
     private readonly SqLiteDbContext _dbContext;
+    private readonly ILogger<CarHandController> _logger;
 
-    public CarHandController(SqLiteDbContext dbContext)
+    public CarHandController(SqLiteDbContext dbContext , ILogger<CarHandController> logger)
     {
+        _logger = logger;   
         _dbContext = dbContext;
     }
     
@@ -21,6 +23,7 @@ public class CarHandController : Controller
     [HttpGet]
     public IActionResult Create()
     {
+        ViewData["Manufacturers"] = _dbContext.Manufacturers.ToList();
         CarEntity newCar = new CarEntity();
         return View(newCar);
     }
@@ -41,6 +44,8 @@ public class CarHandController : Controller
     [ValidateAntiForgeryToken]
     public IActionResult Create(CarEntity newCar)
     {
+        newCar.Manufacturer = _dbContext.Manufacturers.FirstOrDefault(
+            m => m.Id == newCar.ManufacturerId);
         if (ModelState.IsValid)
         {
             _dbContext.Cars.Add(newCar);
@@ -48,7 +53,11 @@ public class CarHandController : Controller
 
             return RedirectToAction("Index");
         }
-        
+        foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+        {
+            _logger.LogError(error.ErrorMessage);
+        }
+        ViewData["Manufacturers"] = _dbContext.Manufacturers.ToList();
         return View(newCar);
     }
     

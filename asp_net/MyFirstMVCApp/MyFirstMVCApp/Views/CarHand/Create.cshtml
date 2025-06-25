@@ -9,6 +9,18 @@
             <input asp-for="ModelName" /><br/>
             <span asp-validation-for="ModelName" class="text-danger"></span>
         </div>
+        <div>
+            <label> Manufacturer </label>
+            <select id="ManufacturerId" name="ManufacturerId">
+                <option value="">Select Manufacturer</option>
+                @foreach (var manufacturer in ViewData["Manufacturers"] 
+                              as List<MyFirstMVCApp.Entities.ManufacturerEntity>)
+                {
+                    <option value="@manufacturer.Id">@manufacturer.Name</option>
+                }
+
+            </select>
+        </div>
         @* <div> *@
         @*     <label asp-for="Manufacturer"></label><br/> *@
         @*     <input asp-for="Manufacturer" /><br/> *@
