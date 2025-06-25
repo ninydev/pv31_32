@@ -22,7 +22,8 @@ namespace MyFirstMVCApp.Controllers.Cars
         // GET: CarAuto
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Cars.ToListAsync());
+            var sqLiteDbContext = _context.Cars.Include(c => c.Manufacturer);
+            return View(await sqLiteDbContext.ToListAsync());
         }
 
         // GET: CarAuto/Details/5
@@ -34,6 +35,7 @@ namespace MyFirstMVCApp.Controllers.Cars
             }
 
             var carEntity = await _context.Cars
+                .Include(c => c.Manufacturer)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (carEntity == null)
             {
@@ -46,6 +48,7 @@ namespace MyFirstMVCApp.Controllers.Cars
         // GET: CarAuto/Create
         public IActionResult Create()
         {
+            ViewData["ManufacturerId"] = new SelectList(_context.Manufacturers, "Id", "Name");
             return View();
         }
 
@@ -54,7 +57,7 @@ namespace MyFirstMVCApp.Controllers.Cars
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ModelName,Year,Color,Price")] CarEntity carEntity)
+        public async Task<IActionResult> Create([Bind("ManufacturerId,Id,ModelName,Year,Color,Price")] CarEntity carEntity)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +65,7 @@ namespace MyFirstMVCApp.Controllers.Cars
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["ManufacturerId"] = new SelectList(_context.Manufacturers, "Id", "Name", carEntity.ManufacturerId);
             return View(carEntity);
         }
 
@@ -78,6 +82,7 @@ namespace MyFirstMVCApp.Controllers.Cars
             {
                 return NotFound();
             }
+            ViewData["ManufacturerId"] = new SelectList(_context.Manufacturers, "Id", "Name", carEntity.ManufacturerId);
             return View(carEntity);
         }
 
@@ -86,7 +91,7 @@ namespace MyFirstMVCApp.Controllers.Cars
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ModelName,Year,Color,Price")] CarEntity carEntity)
+        public async Task<IActionResult> Edit(int id, [Bind("ManufacturerId,Id,ModelName,Year,Color,Price")] CarEntity carEntity)
         {
             if (id != carEntity.Id)
             {
@@ -113,6 +118,7 @@ namespace MyFirstMVCApp.Controllers.Cars
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["ManufacturerId"] = new SelectList(_context.Manufacturers, "Id", "Name", carEntity.ManufacturerId);
             return View(carEntity);
         }
 
@@ -125,6 +131,7 @@ namespace MyFirstMVCApp.Controllers.Cars
             }
 
             var carEntity = await _context.Cars
+                .Include(c => c.Manufacturer)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (carEntity == null)
             {

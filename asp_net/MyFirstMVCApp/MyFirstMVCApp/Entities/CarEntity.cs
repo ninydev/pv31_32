@@ -10,6 +10,9 @@ public class CarEntity
     // ONE CarEntity belongs to ONE ManufacturerEntity
     public ManufacturerEntity Manufacturer { get; set; }
     
+    [ForeignKey(nameof(Manufacturer))]
+    public int ManufacturerId { get; set; }
+    
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Column("Id")]
