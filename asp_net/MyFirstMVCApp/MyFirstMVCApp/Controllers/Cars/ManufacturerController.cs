@@ -54,7 +54,8 @@ namespace MyFirstMVCApp.Controllers.Cars
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,SiteUrl,LogoUrl")] ManufacturerEntity manufacturerEntity)
+        public async Task<IActionResult> Create([
+            Bind("Id,Name,SiteUrl,LogoUrl")] ManufacturerEntity manufacturerEntity)
         {
             if (ModelState.IsValid)
             {

@@ -8,25 +8,35 @@ public class CarEntity
 {
     // Navigation property to ManufacturerEntity
     // ONE CarEntity belongs to ONE ManufacturerEntity
-    public ManufacturerEntity Manufacturer { get; set; }
-    
     [ForeignKey(nameof(Manufacturer))]
+    [Column("ManufacturerId")]
+    [Required]
     public int ManufacturerId { get; set; }
-    
+
+    public ManufacturerEntity Manufacturer { get; set; }
+
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Column("Id")]
     public int Id { get; set; }
-    
+
     [Required]
-    [StringLength(50, MinimumLength = 2, ErrorMessage = "Model must be between 2 and 50 characters.")]
+    [StringLength(50)]
+    [Column("ModelName", TypeName = "nvarchar(50)")]
     public string ModelName { get; set; } = string.Empty;
+
+    [Required]
+    [Range(1900, 2100)]
+    [Column("Year")]
     public int Year { get; set; }
+
+    [Required]
+    [StringLength(30)]
+    [Column("Color", TypeName = "nvarchar(30)")]
     public string Color { get; set; } = string.Empty;
+
+    [Required]
+    [Range(0, 10000000)]
+    [Column("Price", TypeName = "decimal(18,2)")]
     public decimal Price { get; set; }
-    
-    // [Key]
-    // [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    // [Column("Id")]
-    // public Guid Id { get; set; }
 }

@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using MyFirstMVCApp.Db;
 using MyFirstMVCApp.Entities;
+using MyFirstMVCApp.ViewModels;
+using MyFirstMVCApp.Mappers;
 
 namespace MyFirstMVCApp.Controllers;
 
@@ -24,8 +26,7 @@ public class CarHandController : Controller
     public IActionResult Create()
     {
         ViewData["Manufacturers"] = _dbContext.Manufacturers.ToList();
-        CarEntity newCar = new CarEntity();
-        return View(newCar);
+        return View(new CarViewModel());
     }
     
     
@@ -42,12 +43,14 @@ public class CarHandController : Controller
     /// <returns>Или переход на главную, или форму с ошибками</returns>
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Create(CarEntity newCar)
+    public IActionResult Create(CarViewModel model)
     {
-        newCar.Manufacturer = _dbContext.Manufacturers.FirstOrDefault(
-            m => m.Id == newCar.ManufacturerId);
         if (ModelState.IsValid)
         {
+            var newCar = CarMapper.ToEntity(model);
+            newCar.Manufacturer = _dbContext.Manufacturers.FirstOrDefault(
+                m => m.Id == newCar.ManufacturerId);
+
             _dbContext.Cars.Add(newCar);
             _dbContext.SaveChanges();
 
@@ -58,7 +61,7 @@ public class CarHandController : Controller
             _logger.LogError(error.ErrorMessage);
         }
         ViewData["Manufacturers"] = _dbContext.Manufacturers.ToList();
-        return View(newCar);
+        return View(model);
     }
     
     
@@ -83,11 +86,5 @@ public class CarHandController : Controller
     {
         return View(_dbContext.Cars.FirstOrDefault(c => c.Id == id));
     }
-    
-    
-    
-    
-    
-    
-    
 }
+
