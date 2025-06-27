@@ -14,4 +14,6 @@ public class SqLiteDbContext : DbContext
     public SqLiteDbContext(DbContextOptions<SqLiteDbContext> options) : base(options)
     {
     }
+
+public DbSet<MyFirstMVCApp.Entities.CarColorEntity> CarColorEntity { get; set; } = default!;
 }

@@ -34,24 +34,24 @@ build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRm9ybU1vZGVsL0luZGV4LmNzaHRt
 build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/keeper/ItStep/pv31_32/asp_net/MyFirstMVCApp/MyFirstMVCApp/Views/CarAuto/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2FyQXV0by9DcmVhdGUuY3NodG1s
+[/home/keeper/ItStep/pv31_32/asp_net/MyFirstMVCApp/MyFirstMVCApp/Views/CarColor/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2FyQ29sb3IvQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/keeper/ItStep/pv31_32/asp_net/MyFirstMVCApp/MyFirstMVCApp/Views/CarAuto/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2FyQXV0by9EZWxldGUuY3NodG1s
+[/home/keeper/ItStep/pv31_32/asp_net/MyFirstMVCApp/MyFirstMVCApp/Views/CarColor/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2FyQ29sb3IvRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/keeper/ItStep/pv31_32/asp_net/MyFirstMVCApp/MyFirstMVCApp/Views/CarAuto/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2FyQXV0by9EZXRhaWxzLmNzaHRtbA==
+[/home/keeper/ItStep/pv31_32/asp_net/MyFirstMVCApp/MyFirstMVCApp/Views/CarColor/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2FyQ29sb3IvRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/keeper/ItStep/pv31_32/asp_net/MyFirstMVCApp/MyFirstMVCApp/Views/CarAuto/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2FyQXV0by9FZGl0LmNzaHRtbA==
+[/home/keeper/ItStep/pv31_32/asp_net/MyFirstMVCApp/MyFirstMVCApp/Views/CarColor/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2FyQ29sb3IvRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/keeper/ItStep/pv31_32/asp_net/MyFirstMVCApp/MyFirstMVCApp/Views/CarAuto/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2FyQXV0by9JbmRleC5jc2h0bWw=
+[/home/keeper/ItStep/pv31_32/asp_net/MyFirstMVCApp/MyFirstMVCApp/Views/CarColor/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2FyQ29sb3IvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/keeper/ItStep/pv31_32/asp_net/MyFirstMVCApp/MyFirstMVCApp/Views/CarHand/Create.cshtml]

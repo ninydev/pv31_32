@@ -10,23 +10,22 @@ using MyFirstMVCApp.Entities;
 
 namespace MyFirstMVCApp.Controllers.Cars
 {
-    public class CarAutoController : Controller
+    public class CarColorController : Controller
     {
         private readonly SqLiteDbContext _context;
 
-        public CarAutoController(SqLiteDbContext context)
+        public CarColorController(SqLiteDbContext context)
         {
             _context = context;
         }
 
-        // GET: CarAuto
+        // GET: CarColor
         public async Task<IActionResult> Index()
         {
-            var sqLiteDbContext = _context.Cars.Include(c => c.Manufacturer);
-            return View(await sqLiteDbContext.ToListAsync());
+            return View(await _context.CarColorEntity.ToListAsync());
         }
 
-        // GET: CarAuto/Details/5
+        // GET: CarColor/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,43 +33,39 @@ namespace MyFirstMVCApp.Controllers.Cars
                 return NotFound();
             }
 
-            var carEntity = await _context.Cars
-                .Include(c => c.Manufacturer)
+            var carColorEntity = await _context.CarColorEntity
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (carEntity == null)
+            if (carColorEntity == null)
             {
                 return NotFound();
             }
 
-            return View(carEntity);
+            return View(carColorEntity);
         }
 
-        // GET: CarAuto/Create
+        // GET: CarColor/Create
         public IActionResult Create()
         {
-            ViewData["ManufacturerId"] = new SelectList(_context.Manufacturers, "Id", "Name");
             return View();
         }
 
-        // POST: CarAuto/Create
+        // POST: CarColor/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> 
-            Create([Bind("ManufacturerId,Id,ModelName,Year,Color,Price")] CarEntity carEntity)
+        public async Task<IActionResult> Create([Bind("Id,ColorName,ColorUrl,HexCode")] CarColorEntity carColorEntity)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(carEntity);
+                _context.Add(carColorEntity);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ManufacturerId"] = new SelectList(_context.Manufacturers, "Id", "Name", carEntity.ManufacturerId);
-            return View(carEntity);
+            return View(carColorEntity);
         }
 
-        // GET: CarAuto/Edit/5
+        // GET: CarColor/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -78,23 +73,22 @@ namespace MyFirstMVCApp.Controllers.Cars
                 return NotFound();
             }
 
-            var carEntity = await _context.Cars.FindAsync(id);
-            if (carEntity == null)
+            var carColorEntity = await _context.CarColorEntity.FindAsync(id);
+            if (carColorEntity == null)
             {
                 return NotFound();
             }
-            ViewData["ManufacturerId"] = new SelectList(_context.Manufacturers, "Id", "Name", carEntity.ManufacturerId);
-            return View(carEntity);
+            return View(carColorEntity);
         }
 
-        // POST: CarAuto/Edit/5
+        // POST: CarColor/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ManufacturerId,Id,ModelName,Year,Color,Price")] CarEntity carEntity)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ColorName,ColorUrl,HexCode")] CarColorEntity carColorEntity)
         {
-            if (id != carEntity.Id)
+            if (id != carColorEntity.Id)
             {
                 return NotFound();
             }
@@ -103,12 +97,12 @@ namespace MyFirstMVCApp.Controllers.Cars
             {
                 try
                 {
-                    _context.Update(carEntity);
+                    _context.Update(carColorEntity);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CarEntityExists(carEntity.Id))
+                    if (!CarColorEntityExists(carColorEntity.Id))
                     {
                         return NotFound();
                     }
@@ -119,11 +113,10 @@ namespace MyFirstMVCApp.Controllers.Cars
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ManufacturerId"] = new SelectList(_context.Manufacturers, "Id", "Name", carEntity.ManufacturerId);
-            return View(carEntity);
+            return View(carColorEntity);
         }
 
-        // GET: CarAuto/Delete/5
+        // GET: CarColor/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -131,35 +124,34 @@ namespace MyFirstMVCApp.Controllers.Cars
                 return NotFound();
             }
 
-            var carEntity = await _context.Cars
-                .Include(c => c.Manufacturer)
+            var carColorEntity = await _context.CarColorEntity
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (carEntity == null)
+            if (carColorEntity == null)
             {
                 return NotFound();
             }
 
-            return View(carEntity);
+            return View(carColorEntity);
         }
 
-        // POST: CarAuto/Delete/5
+        // POST: CarColor/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var carEntity = await _context.Cars.FindAsync(id);
-            if (carEntity != null)
+            var carColorEntity = await _context.CarColorEntity.FindAsync(id);
+            if (carColorEntity != null)
             {
-                _context.Cars.Remove(carEntity);
+                _context.CarColorEntity.Remove(carColorEntity);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CarEntityExists(int id)
+        private bool CarColorEntityExists(int id)
         {
-            return _context.Cars.Any(e => e.Id == id);
+            return _context.CarColorEntity.Any(e => e.Id == id);
         }
     }
 }

@@ -18,10 +18,9 @@ public class CarViewModel
     [Display(Name = "Год выпуска", Description = "Год выпуска автомобиля")]
     public int Year { get; set; }
 
-    [Required(ErrorMessage = "Укажите цвет")]
-    [StringLength(30, ErrorMessage = "Цвет не должен превышать 30 символов")]
-    [Display(Name = "Цвет", Description = "Цвет автомобиля")]
-    public string Color { get; set; } = string.Empty;
+    [Required(ErrorMessage = "Укажите хотя бы один цвет")]
+    [Display(Name = "Цвета", Description = "Выберите один или несколько цветов автомобиля")]
+    public int[] ColorIds { get; set; } = Array.Empty<int>();
 
     [Required(ErrorMessage = "Укажите цену")]
     [Range(0, 10000000, ErrorMessage = "Цена должна быть положительной и не превышать 10 000 000")]

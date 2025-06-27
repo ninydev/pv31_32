@@ -26,6 +26,7 @@ public class CarHandController : Controller
     public IActionResult Create()
     {
         ViewData["Manufacturers"] = _dbContext.Manufacturers.ToList();
+        ViewData["Colors"] = _dbContext.CarColorEntity.ToList();
         return View(new CarViewModel());
     }
     
@@ -47,10 +48,8 @@ public class CarHandController : Controller
     {
         if (ModelState.IsValid)
         {
-            var newCar = CarMapper.ToEntity(model);
-            newCar.Manufacturer = _dbContext.Manufacturers.FirstOrDefault(
-                m => m.Id == newCar.ManufacturerId);
-
+            var allColors = _dbContext.CarColorEntity.ToList();
+            var newCar = CarMapper.ToEntity(model, allColors);
             _dbContext.Cars.Add(newCar);
             _dbContext.SaveChanges();
 
@@ -61,6 +60,7 @@ public class CarHandController : Controller
             _logger.LogError(error.ErrorMessage);
         }
         ViewData["Manufacturers"] = _dbContext.Manufacturers.ToList();
+        ViewData["Colors"] = _dbContext.CarColorEntity.ToList();
         return View(model);
     }
     
@@ -87,4 +87,3 @@ public class CarHandController : Controller
         return View(_dbContext.Cars.FirstOrDefault(c => c.Id == id));
     }
 }
-

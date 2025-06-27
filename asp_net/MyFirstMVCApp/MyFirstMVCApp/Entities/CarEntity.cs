@@ -30,10 +30,9 @@ public class CarEntity
     [Column("Year")]
     public int Year { get; set; }
 
-    [Required]
-    [StringLength(30)]
-    [Column("Color", TypeName = "nvarchar(30)")]
-    public string Color { get; set; } = string.Empty;
+    // Navigation property to CarEntity
+    // MANY CarColorEntity can be associated with MANY CarEntities  
+    public ICollection<CarColorEntity> Colors { get; set; } = new List<CarColorEntity>();
 
     [Required]
     [Range(0, 10000000)]

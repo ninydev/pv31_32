@@ -10,8 +10,8 @@
             <span asp-validation-for="ModelName" class="text-danger"></span>
         </div>
         <div>
-            <label> Manufacturer </label>
-            <select id="ManufacturerId" name="ManufacturerId">
+            <label asp-for="ManufacturerId"> Manufacturer </label><br/>
+            <select asp-for="ManufacturerId" id="ManufacturerId" name="ManufacturerId">
                 <option value="">Select Manufacturer</option>
                 @foreach (var manufacturer in ViewData["Manufacturers"] 
                               as List<MyFirstMVCApp.Entities.ManufacturerEntity>)
@@ -19,22 +19,23 @@
                     <option value="@manufacturer.Id">@manufacturer.Name</option>
                 }
 
-            </select>
+            </select><br/>
+            <span asp-validation-for="ManufacturerId" class="text-danger"></span>
         </div>
-        @* <div> *@
-        @*     <label asp-for="Manufacturer"></label><br/> *@
-        @*     <input asp-for="Manufacturer" /><br/> *@
-        @*     <span asp-validation-for="Manufacturer" class="text-danger"></span> *@
-        @* </div> *@
         <div>
             <label asp-for="Year"></label><br/>
             <input asp-for="Year" /><br/>
             <span asp-validation-for="Year" class="text-danger"></span>
         </div>
         <div>
-            <label asp-for="Color"></label><br/>
-            <input asp-for="Color" /><br/>
-            <span asp-validation-for="Color" class="text-danger"></span>
+            <label asp-for="ColorIds"></label><br/>
+            <select asp-for="ColorIds"  multiple>
+                @foreach (var color in ViewData["Colors"] as List<MyFirstMVCApp.Entities.CarColorEntity>)
+                {
+                    <option value="@color.Id">@color.ColorName</option>
+                }
+            </select>
+            <span asp-validation-for="ColorIds" class="text-danger"></span>
         </div>
         <div>
             <label asp-for="Price"></label><br/>
