@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using MyFirstMVCApp.Controllers.Results;
 using MyFirstMVCApp.Db;
 using MyFirstMVCApp.Entities;
 using MyFirstMVCApp.ViewModels;
@@ -72,9 +74,36 @@ public class CarHandController : Controller
     /// </summary>
     /// <returns>Страница со всеми автомобилями</returns>
     [HttpGet]
-    public IActionResult Index()
+    public IActionResult Index([FromQuery] PaginateViewModel paginate)
     {
-        return View(_dbContext.Cars.ToList());
+        // IEnumerable<MyFirstMVCApp.Entities.CarEntity> cars = 
+        //     _dbContext
+        //         .Cars
+        //         .Include(c => c.Manufacturer)
+        //         .Include(c=> c.Colors)
+        //         .ToList();
+        
+        
+        var query = _dbContext
+            .Cars
+            .Include(c => c.Manufacturer)
+            .Include(c => c.Colors);
+
+        var totalItems = query.Count();
+        
+        var cars = query
+            .Skip((paginate.Page - 1) * paginate.PageSize)
+            .Take(paginate.PageSize)
+            .ToList();
+
+        var result = new PagedResult<CarEntity>
+        {
+            Items = cars,
+            Page = paginate.Page,
+            PageSize = paginate.PageSize,
+            TotalItems = totalItems
+        };
+        return View(result);
     }
     
     /// <summary>
@@ -84,6 +113,20 @@ public class CarHandController : Controller
     /// <returns>Страница с 1 автомобилем</returns>
     public IActionResult ReadById(int id)
     {
-        return View(_dbContext.Cars.FirstOrDefault(c => c.Id == id));
+        CarEntity carDB = 
+            _dbContext.Cars
+                .Include(c => c.Manufacturer)
+                .Include(c => c.Colors)
+                .FirstOrDefault(c => c.Id == id);
+        
+        if (carDB == null)
+        {
+            _logger.LogWarning($"Car with ID {id} not found.");
+            return NotFound();
+        }
+        
+        // CarViewModel carVM = CarMapper.ToViewModel(carDB);
+        
+        return View(carDB);
     }
 }

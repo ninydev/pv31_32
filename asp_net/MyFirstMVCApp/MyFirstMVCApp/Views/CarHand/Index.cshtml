@@ -1,4 +1,4 @@
-@model IEnumerable<MyFirstMVCApp.Entities.CarEntity>
+@model MyFirstMVCApp.Controllers.Results.PagedResult<MyFirstMVCApp.Entities.CarEntity>
 
 
 <div>
@@ -10,19 +10,26 @@
     <thead>
     <tr>
         <th>Model Name</th>
-        @* <th>Manufacturer</th> *@
+        <th>Manufacturer</th>
         <th>Year</th>
+        <th>Colors</th>
         <th>Price</th>
         <th> Actions </th>
     </tr>
     </thead>
     <tbody>
-    @foreach (var car in Model)
+    @foreach (var car in Model.Items)
     {
         <tr>
             <td>@car.ModelName</td>
-            @* <td>@car.Manufacturer.Name</td> *@
+            <td>@car.Manufacturer.Name</td>
             <td>@car.Year</td>
+            <td>
+                @foreach (var color in car.Colors)
+                {
+                    <span style="background-color: @color.HexCode"> @color.ColorName </span>
+                }
+            </td>
             <td>@car.Price.ToString("C")</td>
             <td>
                 <a asp-action="ReadById" asp-route-id="@car.Id">View</a> |
@@ -30,6 +37,16 @@
         </tr>
     }
     </tbody>
-    <tfoot></tfoot>
+    <tfoot>
+    <tr>
+        <td> Total: @Model.TotalItems | Pages: @Model.TotalPages</td>
+        <td> Page Navigate </td>
+        <td> Element on page <select id="pageSize" name="pageSize" onchange="location.href='?pageSize=' + this.value">
+            <option value=""> on page </option>
+            <option value="1">1</option>
+            <option value="10">10</option>
+        </select> </td>
+    </tr>
+    </tfoot>
 </table>
 </div>

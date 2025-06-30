@@ -38,4 +38,18 @@ public class CarEntity
     [Range(0, 10000000)]
     [Column("Price", TypeName = "decimal(18,2)")]
     public decimal Price { get; set; }
+
+    // Временные метки
+    [Required]
+    [Column("CreatedAt")]
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+    [Required]
+    [Column("UpdatedAt")]
+    public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
+
+    // Soft delete
+    [Required]
+    [Column("IsDeleted")]
+    public bool IsDeleted { get; set; } = false;
 }

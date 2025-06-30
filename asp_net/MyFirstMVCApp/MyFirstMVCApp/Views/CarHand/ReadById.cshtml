@@ -8,9 +8,15 @@
         <strong>Model Name:</strong> @Model.ModelName
     </div>
     <div>
-        @* <strong>Manufacturer:</strong> @Model.Manufacturer *@
+        <strong>Year</strong> @Model.Year
     </div>
     <div>
-        <strong>Year</strong> @Model.Year
+        <strong>Manufacturer</strong> @Model.Manufacturer.Name
+    </div>
+    <div>
+        @foreach (var color in Model.Colors)
+        {
+            <span style="background-color: @color.HexCode"> @color.ColorName </span>
+        }
     </div>
 </div>
