@@ -54,10 +54,25 @@ namespace MyFirstMVCApp.Controllers.Cars
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ColorName,ColorUrl,HexCode")] CarColorEntity carColorEntity)
+        public async Task<IActionResult> Create(
+            [Bind("Id,ColorName,ColorUrl,HexCode")] CarColorEntity carColorEntity,
+            IFormFile colorFile
+            )
         {
             if (ModelState.IsValid)
             {
+                if (colorFile != null)
+                {
+                    string fileName = Guid.NewGuid().ToString() + "_" + colorFile.FileName;
+                    string filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", "carcolors", fileName);
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await colorFile.CopyToAsync(stream);
+                    }
+                    
+                    carColorEntity.ColorUrl = "/images/carcolors/" + fileName;
+                }
+                
                 _context.Add(carColorEntity);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

@@ -20,4 +20,8 @@
       <AdditionalFiles Include="Views\FormModel\Index.cshtml" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="wwwroot\images\carcolors\" />
+    </ItemGroup>
+
 </Project>
