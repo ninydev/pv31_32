@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebApplicationAuth")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+718c755ad9b1e3069ee0ee89979b49639901e1cf")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d5f78ab6d7af4af171e7877eb6c01e11b8fb99a4")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebApplicationAuth")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebApplicationAuth")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
