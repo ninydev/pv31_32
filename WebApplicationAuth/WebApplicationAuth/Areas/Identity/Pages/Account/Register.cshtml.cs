@@ -25,19 +25,19 @@ namespace WebApplicationAuth.Areas.Identity.Pages.Account
 {
     public class RegisterModel : PageModel
     {
-        private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly IUserStore<IdentityUser> _userStore;
-        private readonly IUserEmailStore<IdentityUser> _emailStore;
+        private readonly SignInManager<MyIdentityUserModel> _signInManager;
+        private readonly UserManager<MyIdentityUserModel> _userManager;
+        private readonly IUserStore<MyIdentityUserModel> _userStore;
+        private readonly IUserEmailStore<MyIdentityUserModel> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
         private readonly ApplicationDbContext _context;
 
         public RegisterModel(
             ApplicationDbContext context,
-            UserManager<IdentityUser> userManager,
-            IUserStore<IdentityUser> userStore,
-            SignInManager<IdentityUser> signInManager,
+            UserManager<MyIdentityUserModel> userManager,
+            IUserStore<MyIdentityUserModel> userStore,
+            SignInManager<MyIdentityUserModel> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender)
         {
@@ -135,6 +135,7 @@ namespace WebApplicationAuth.Areas.Identity.Pages.Account
 
                     var userId = await _userManager.GetUserIdAsync(user);
 
+                    // Create a new UserProfileModel instance and set the DateOfBirth
                     UserProfileModel profile = new UserProfileModel();
                     profile.UserId = userId;
                     profile.DateOfBirth = Input.DateOfBirth;
@@ -174,27 +175,27 @@ namespace WebApplicationAuth.Areas.Identity.Pages.Account
             return Page();
         }
 
-        private IdentityUser CreateUser()
+        private MyIdentityUserModel CreateUser()
         {
             try
             {
-                return Activator.CreateInstance<IdentityUser>();
+                return Activator.CreateInstance<MyIdentityUserModel>();
             }
             catch
             {
-                throw new InvalidOperationException($"Can't create an instance of '{nameof(IdentityUser)}'. " +
-                    $"Ensure that '{nameof(IdentityUser)}' is not an abstract class and has a parameterless constructor, or alternatively " +
+                throw new InvalidOperationException($"Can't create an instance of '{nameof(MyIdentityUserModel)}'. " +
+                    $"Ensure that '{nameof(MyIdentityUserModel)}' is not an abstract class and has a parameterless constructor, or alternatively " +
                     $"override the register page in /Areas/Identity/Pages/Account/Register.cshtml");
             }
         }
 
-        private IUserEmailStore<IdentityUser> GetEmailStore()
+        private IUserEmailStore<MyIdentityUserModel> GetEmailStore()
         {
             if (!_userManager.SupportsUserEmail)
             {
                 throw new NotSupportedException("The default UI requires a user store with email support.");
             }
-            return (IUserEmailStore<IdentityUser>)_userStore;
+            return (IUserEmailStore<MyIdentityUserModel>)_userStore;
         }
     }
 }

@@ -6,7 +6,7 @@ namespace WebApplicationAuth.Entities;
 
 public class UserProfileModel
 {
-    public virtual IdentityUser User { get; set; }
+    public virtual MyIdentityUserModel User { get; set; }
     
     [Key, ForeignKey(nameof(User))]
     public string UserId { get; set; }
