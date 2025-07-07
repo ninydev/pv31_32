@@ -18,6 +18,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using WebApplicationAuth.Data;
+using WebApplicationAuth.Entities;
 
 namespace WebApplicationAuth.Areas.Identity.Pages.Account
 {
@@ -29,8 +31,10 @@ namespace WebApplicationAuth.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<IdentityUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly ApplicationDbContext _context;
 
         public RegisterModel(
+            ApplicationDbContext context,
             UserManager<IdentityUser> userManager,
             IUserStore<IdentityUser> userStore,
             SignInManager<IdentityUser> signInManager,
@@ -43,6 +47,7 @@ namespace WebApplicationAuth.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _context = context;
         }
 
         /// <summary>
@@ -97,6 +102,12 @@ namespace WebApplicationAuth.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+            
+            // Date of Birth field
+            [Display(Name = "Date of Birth")]
+            [DataType(DataType.Date)]
+            [Required(ErrorMessage = "Date of Birth is required.")]
+            public DateTime DateOfBirth { get; set; }
         }
 
 
@@ -123,6 +134,15 @@ namespace WebApplicationAuth.Areas.Identity.Pages.Account
                     _logger.LogInformation("User created a new account with password.");
 
                     var userId = await _userManager.GetUserIdAsync(user);
+
+                    UserProfileModel profile = new UserProfileModel();
+                    profile.UserId = userId;
+                    profile.DateOfBirth = Input.DateOfBirth;
+                    // Save the user profile to the database
+                    _context.Add(profile);
+                    await _context.SaveChangesAsync();
+                    
+                    
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
                     var callbackUrl = Url.Page(
