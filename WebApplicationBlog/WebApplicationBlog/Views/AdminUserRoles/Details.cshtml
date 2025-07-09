@@ -1,0 +1,17 @@
+﻿@model WebApplicationBlog.Models.ViewModels.Admins.UserRolesViewModel
+
+<h2>User Details</h2>
+<div>
+    <strong>User Name:</strong> @Model.UserName
+</div>
+<div>
+    <strong>Roles:</strong>
+    <ul>
+        @foreach (var role in Model.Roles)
+        {
+            <li>@role</li>
+        }
+    </ul>
+</div>
+<a asp-action="Index">Back to List</a>
+

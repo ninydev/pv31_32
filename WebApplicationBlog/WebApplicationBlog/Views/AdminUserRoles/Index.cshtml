@@ -1,0 +1,26 @@
+﻿@model IEnumerable<WebApplicationBlog.Models.ViewModels.Admins.UserRolesViewModel>
+
+<h2>User Roles</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>User Name</th>
+            <th>Roles</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.UserName</td>
+            <td>@string.Join(", ", user.Roles)</td>
+            <td>
+                <a asp-action="Details" asp-route-userId="@user.UserId">Details</a> |
+                <a asp-action="Edit" asp-route-userId="@user.UserId">Edit</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
