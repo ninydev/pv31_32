@@ -21,10 +21,11 @@ public static class InitAdminAndRoles
         {
             adminUser = new IdentityUser
             {
-                UserName = "admin",
-                Email = "admin@localhost"
+                UserName = "admin@localhost.com",
+                Email = "admin@localhost.com",
+                EmailConfirmed = true // Подтверждение почты
             };
-            var result = await userManager.CreateAsync(adminUser, "Admin123!");
+            var result = await userManager.CreateAsync(adminUser, "Admin123!@QWzx");
             if (result.Succeeded)
             {
                 await userManager.AddToRoleAsync(adminUser, "Admin");
@@ -32,6 +33,11 @@ public static class InitAdminAndRoles
         }
         else
         {
+            if (!adminUser.EmailConfirmed)
+            {
+                adminUser.EmailConfirmed = true;
+                await userManager.UpdateAsync(adminUser);
+            }
             if (!await userManager.IsInRoleAsync(adminUser, "Admin"))
                 await userManager.AddToRoleAsync(adminUser, "Admin");
         }
