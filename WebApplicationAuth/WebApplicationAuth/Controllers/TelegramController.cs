@@ -49,5 +49,10 @@ namespace WebApplicationAuth.Controllers
         {
             return View("Index");
         }
+        
+        public ActionResult Guest()
+        {
+            return View("Index");
+        }
     }
 }
