@@ -1134,6 +1134,60 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\lib\jquery\LICENSE.txt'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\storage\posts\1b3df488-b761-44ac-99ae-72815621f49b.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>WebApplicationBlog</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/WebApplicationBlog</BasePath>
+      <RelativePath>storage/posts/1b3df488-b761-44ac-99ae-72815621f49b.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>47stf1u2p4</Fingerprint>
+      <Integrity>AFkG3yZYdMbEhSLSfDwx3V8BnUlmmu16RA/wYWJFsxc=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\storage\posts\1b3df488-b761-44ac-99ae-72815621f49b.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\storage\posts\260edeaf-3d99-4145-b51b-afff01951e6f.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>WebApplicationBlog</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/WebApplicationBlog</BasePath>
+      <RelativePath>storage/posts/260edeaf-3d99-4145-b51b-afff01951e6f.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>47stf1u2p4</Fingerprint>
+      <Integrity>AFkG3yZYdMbEhSLSfDwx3V8BnUlmmu16RA/wYWJFsxc=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\storage\posts\260edeaf-3d99-4145-b51b-afff01951e6f.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\storage\posts\a2355342-3945-481b-9c66-b47cbedc9a81.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>WebApplicationBlog</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/WebApplicationBlog</BasePath>
+      <RelativePath>storage/posts/a2355342-3945-481b-9c66-b47cbedc9a81.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>47stf1u2p4</Fingerprint>
+      <Integrity>AFkG3yZYdMbEhSLSfDwx3V8BnUlmmu16RA/wYWJFsxc=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\storage\posts\a2355342-3945-481b-9c66-b47cbedc9a81.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\WebApplicationBlog.15lokd092w.bundle.scp.css'))">
       <SourceType>Package</SourceType>
       <SourceId>WebApplicationBlog</SourceId>

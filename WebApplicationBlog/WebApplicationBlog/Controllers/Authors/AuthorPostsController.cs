@@ -8,7 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebApplicationBlog.Data;
+using WebApplicationBlog.Mappers;
 using WebApplicationBlog.Models.Entities;
+using WebApplicationBlog.Models.ViewModels.Authors;
 
 namespace WebApplicationBlog.Controllers.Authors
 {
@@ -24,6 +26,7 @@ namespace WebApplicationBlog.Controllers.Authors
         }
 
         // GET: AuthorPosts
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -39,6 +42,7 @@ namespace WebApplicationBlog.Controllers.Authors
         }
 
         // GET: AuthorPosts/Details/5
+        [HttpGet("details/{id:int}")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -62,6 +66,7 @@ namespace WebApplicationBlog.Controllers.Authors
         }
 
         // GET: AuthorPosts/Create
+        [HttpGet("create")]
         public IActionResult Create()
         {
             ViewData["Categories"] = new SelectList(_context.Categories, "Id", "Name");
@@ -72,22 +77,43 @@ namespace WebApplicationBlog.Controllers.Authors
         // POST: AuthorPosts/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost ("create")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,AuthorId,Slug,Title,Thumbnail,Content,CreatedAt,UpdatedAt,CategoryId,ViewCount,CommentCount,IsPublished,IsDeleted")] PostModel postModel)
+        public async Task<IActionResult> Create(PostViewModel postViewModel)
         {
             if (ModelState.IsValid)
             {
+                var authorId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var tags = _context.Tags
+                    .Where(t => postViewModel.TagIds.Contains(t.Id))
+                    .ToList();
+                var postModel = PostMapper.ToEntity(postViewModel, authorId, tags);
+
+                if (postViewModel.Thumbnail != null && postViewModel.Thumbnail.Length > 0)
+                {
+                    // Save the thumbnail file and set the Thumbnail property
+                    var fileName = Guid.NewGuid() + System.IO.Path.GetExtension(postViewModel.Thumbnail.FileName);
+                    var filePath = System.IO.Path.Combine("wwwroot", "storage", "posts", fileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await postViewModel.Thumbnail.CopyToAsync(stream);
+                    }
+
+                    postModel.Thumbnail = $"/uploads/thumbnails/{fileName}";
+                }
+
                 _context.Add(postModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AuthorId"] = new SelectList(_context.Profiles, "UserId", "UserId", postModel.AuthorId);
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", postModel.CategoryId);
-            return View(postModel);
+            ViewData["Categories"] = new SelectList(_context.Categories, "Id", "Name");
+            ViewData["Tags"] = new MultiSelectList(_context.Tags, "Id", "Name");
+            return View(postViewModel);
         }
 
         // GET: AuthorPosts/Edit/5
+        [HttpGet("edit/{id:int}")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -108,7 +134,7 @@ namespace WebApplicationBlog.Controllers.Authors
         // POST: AuthorPosts/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost ("edit/{id:int}")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,AuthorId,Slug,Title,Thumbnail,Content,CreatedAt,UpdatedAt,CategoryId,ViewCount,CommentCount,IsPublished,IsDeleted")] PostModel postModel)
         {
@@ -143,29 +169,8 @@ namespace WebApplicationBlog.Controllers.Authors
         }
 
         // GET: AuthorPosts/Delete/5
+        [HttpGet("delete/{id:int}")]
         public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var postModel = await _context.Posts
-                .Include(p => p.Author)
-                .Include(p => p.Category)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (postModel == null)
-            {
-                return NotFound();
-            }
-
-            return View(postModel);
-        }
-
-        // POST: AuthorPosts/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var postModel = await _context.Posts.FindAsync(id);
             if (postModel != null)
