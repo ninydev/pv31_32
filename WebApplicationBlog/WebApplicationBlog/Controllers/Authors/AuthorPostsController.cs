@@ -100,7 +100,7 @@ namespace WebApplicationBlog.Controllers.Authors
                         await postViewModel.Thumbnail.CopyToAsync(stream);
                     }
 
-                    postModel.Thumbnail = $"/uploads/thumbnails/{fileName}";
+                    postModel.Thumbnail = $"/storage/posts/{fileName}";
                 }
 
                 _context.Add(postModel);

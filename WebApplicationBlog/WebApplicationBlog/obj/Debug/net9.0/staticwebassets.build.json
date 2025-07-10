@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "fqptFmq3nhqn/B8ItD8uYSzqxkqVH3dyFb+RYohLWE4=",
+  "Hash": "Iv1sFHqwxL/qp9DyuL/jdGGxggQPIr1pmkePMqtFeNQ=",
   "Source": "WebApplicationBlog",
   "BasePath": "_content/WebApplicationBlog",
   "Mode": "Default",
@@ -5391,6 +5391,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/storage/posts/260edeaf-3d99-4145-b51b-afff01951e6f.webp"
+    },
+    {
+      "Identity": "/home/keeper/ItStep/pv31_32/WebApplicationBlog/WebApplicationBlog/wwwroot/storage/posts/6a586094-2043-4d1b-82f1-370540f0de53.webp",
+      "SourceId": "WebApplicationBlog",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/keeper/ItStep/pv31_32/WebApplicationBlog/WebApplicationBlog/wwwroot/",
+      "BasePath": "_content/WebApplicationBlog",
+      "RelativePath": "storage/posts/6a586094-2043-4d1b-82f1-370540f0de53#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "47stf1u2p4",
+      "Integrity": "AFkG3yZYdMbEhSLSfDwx3V8BnUlmmu16RA/wYWJFsxc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/storage/posts/6a586094-2043-4d1b-82f1-370540f0de53.webp"
     },
     {
       "Identity": "/home/keeper/ItStep/pv31_32/WebApplicationBlog/WebApplicationBlog/wwwroot/storage/posts/a2355342-3945-481b-9c66-b47cbedc9a81.webp",
@@ -34986,6 +35007,88 @@
         {
           "Name": "Last-Modified",
           "Value": "Thu, 10 Jul 2025 16:54:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-AFkG3yZYdMbEhSLSfDwx3V8BnUlmmu16RA/wYWJFsxc="
+        }
+      ]
+    },
+    {
+      "Route": "storage/posts/6a586094-2043-4d1b-82f1-370540f0de53.47stf1u2p4.webp",
+      "AssetFile": "/home/keeper/ItStep/pv31_32/WebApplicationBlog/WebApplicationBlog/wwwroot/storage/posts/6a586094-2043-4d1b-82f1-370540f0de53.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4576"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"AFkG3yZYdMbEhSLSfDwx3V8BnUlmmu16RA/wYWJFsxc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 10 Jul 2025 17:15:12 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "47stf1u2p4"
+        },
+        {
+          "Name": "label",
+          "Value": "storage/posts/6a586094-2043-4d1b-82f1-370540f0de53.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-AFkG3yZYdMbEhSLSfDwx3V8BnUlmmu16RA/wYWJFsxc="
+        }
+      ]
+    },
+    {
+      "Route": "storage/posts/6a586094-2043-4d1b-82f1-370540f0de53.webp",
+      "AssetFile": "/home/keeper/ItStep/pv31_32/WebApplicationBlog/WebApplicationBlog/wwwroot/storage/posts/6a586094-2043-4d1b-82f1-370540f0de53.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4576"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"AFkG3yZYdMbEhSLSfDwx3V8BnUlmmu16RA/wYWJFsxc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 10 Jul 2025 17:15:12 GMT"
         },
         {
           "Name": "Cache-Control",
