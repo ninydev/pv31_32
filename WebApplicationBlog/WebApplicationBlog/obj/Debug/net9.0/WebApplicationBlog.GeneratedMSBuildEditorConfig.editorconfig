@@ -48,8 +48,44 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/keeper/ItStep/pv31_32/WebApplicationBlog/WebApplicationBlog/Views/AdminCategories/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW5DYXRlZ29yaWVzL0NyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/keeper/ItStep/pv31_32/WebApplicationBlog/WebApplicationBlog/Views/AdminCategories/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW5DYXRlZ29yaWVzL0RldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/keeper/ItStep/pv31_32/WebApplicationBlog/WebApplicationBlog/Views/AdminCategories/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW5DYXRlZ29yaWVzL0VkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/keeper/ItStep/pv31_32/WebApplicationBlog/WebApplicationBlog/Views/AdminCategories/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW5DYXRlZ29yaWVzL0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/keeper/ItStep/pv31_32/WebApplicationBlog/WebApplicationBlog/Views/AdminDashboard/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW5EYXNoYm9hcmQvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/keeper/ItStep/pv31_32/WebApplicationBlog/WebApplicationBlog/Views/AdminTags/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW5UYWdzL0NyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/keeper/ItStep/pv31_32/WebApplicationBlog/WebApplicationBlog/Views/AdminTags/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW5UYWdzL0RlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/keeper/ItStep/pv31_32/WebApplicationBlog/WebApplicationBlog/Views/AdminTags/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW5UYWdzL0RldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/keeper/ItStep/pv31_32/WebApplicationBlog/WebApplicationBlog/Views/AdminTags/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW5UYWdzL0VkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/keeper/ItStep/pv31_32/WebApplicationBlog/WebApplicationBlog/Views/AdminTags/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW5UYWdzL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/keeper/ItStep/pv31_32/WebApplicationBlog/WebApplicationBlog/Views/AdminUserRoles/Details.cshtml]
@@ -62,6 +98,26 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/home/keeper/ItStep/pv31_32/WebApplicationBlog/WebApplicationBlog/Views/AdminUserRoles/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW5Vc2VyUm9sZXMvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/keeper/ItStep/pv31_32/WebApplicationBlog/WebApplicationBlog/Views/AuthorPosts/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXV0aG9yUG9zdHMvQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/keeper/ItStep/pv31_32/WebApplicationBlog/WebApplicationBlog/Views/AuthorPosts/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXV0aG9yUG9zdHMvRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/keeper/ItStep/pv31_32/WebApplicationBlog/WebApplicationBlog/Views/AuthorPosts/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXV0aG9yUG9zdHMvRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/keeper/ItStep/pv31_32/WebApplicationBlog/WebApplicationBlog/Views/AuthorPosts/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXV0aG9yUG9zdHMvRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/keeper/ItStep/pv31_32/WebApplicationBlog/WebApplicationBlog/Views/AuthorPosts/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXV0aG9yUG9zdHMvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/keeper/ItStep/pv31_32/WebApplicationBlog/WebApplicationBlog/Views/Home/Index.cshtml]
