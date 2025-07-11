@@ -22,6 +22,7 @@ public class GuestPostController : Controller
         var posts = await _context.Posts
             .Include(p => p.Category)
             .Include(p => p.Tags)
+            .Include(p => p.Comments)
             .OrderByDescending(p => p.CreatedAt)
             .ToListAsync();
 

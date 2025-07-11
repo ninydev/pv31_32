@@ -1,4 +1,6 @@
-﻿@model IEnumerable<WebApplicationBlog.Models.Entities.PostModel>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@model IEnumerable<WebApplicationBlog.Models.Entities.PostModel>
 
 @{
     ViewData["Title"] = "Blog Page";
@@ -19,6 +21,31 @@
                 <div>
                     <p>@Html.Raw(post.Content)</p>
                 </div>
+                
+                <div>
+                    <ul>
+                        @foreach( var comment in post.Comments)
+                        {
+                            <li>
+                                <strong>@comment.Content</strong> (@comment.CreatedAt.ToString("g")): @Html.Raw(comment.Content)
+                            </li>
+                        }
+                    </ul>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <div>
+                            <form class="comment-form" id="@post.Id">
+                                <textarea class="form-control" rows="3" placeholder="Add a comment..."></textarea>
+                                <button class="btn btn-primary mt-2">Submit Comment</button>
+                            </form>
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-muted">Please <a asp-area="Identity" asp-page="/Account/Login">login</a> to comment.</p>
+                    }
+                    
+                </div>
 
                 <footer>
                     <p><strong>Category:</strong> @post.Category</p>
@@ -32,3 +59,38 @@
         }
     </section>
 </div>
+
+@section Scripts {
+    <script>
+        document.querySelectorAll('.comment-form').forEach(form => {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const postId = this.id;
+                const content = this.querySelector('textarea').value;
+
+                if (!content) {
+                    console.error('Comment cannot be empty.');
+                    return;
+                }
+
+                fetch(`/api/posts/${postId}/comments`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ content: content })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.success) {
+                        // location.reload(); // Reload to show the new comment
+                    } else {
+                        alert('Error adding comment: ' + data.message);
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            });
+        });
+    </script>
+}

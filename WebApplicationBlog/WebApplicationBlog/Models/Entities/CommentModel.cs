@@ -19,6 +19,9 @@ public class CommentModel
     [Column("content", TypeName = "text")] public string Content { get; set; }
 
     public PostModel Post { get; set; }
+    
+    [ForeignKey(nameof(Post))]
+    public int PostId { get; set; }
 
     [Column("created_at")] public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 }
