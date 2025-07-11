@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MyFirstMVCApp.Db;
 
@@ -12,12 +13,19 @@ builder.Services.AddDbContext<SqLiteDbContext>(
     )
 );
 
+builder.Services.AddDefaultIdentity<IdentityUser>(
+        options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>() // Добавлено для поддержки ролей
+    .AddEntityFrameworkStores<SqLiteDbContext>();
+
 var app = builder.Build();
 
 // Автоматическое создание базы данных и таблиц по сущностям
 using (var scope = app.Services.CreateScope())
 {
-    var db = scope.ServiceProvider.GetRequiredService<SqLiteDbContext>();
+    var services = scope.ServiceProvider;
+    var db = services.GetRequiredService<SqLiteDbContext>();
+    db.Database.Migrate();
     db.Database.EnsureCreated();
 }
 

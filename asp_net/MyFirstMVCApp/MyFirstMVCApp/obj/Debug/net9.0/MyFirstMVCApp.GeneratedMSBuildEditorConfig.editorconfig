@@ -34,6 +34,26 @@ build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRm9ybU1vZGVsL0luZGV4LmNzaHRt
 build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/keeper/ItStep/pv31_32/asp_net/MyFirstMVCApp/MyFirstMVCApp/Areas/Identity/Pages/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/keeper/ItStep/pv31_32/asp_net/MyFirstMVCApp/MyFirstMVCApp/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9fVmlld0ltcG9ydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/keeper/ItStep/pv31_32/asp_net/MyFirstMVCApp/MyFirstMVCApp/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/keeper/ItStep/pv31_32/asp_net/MyFirstMVCApp/MyFirstMVCApp/Areas/Identity/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/keeper/ItStep/pv31_32/asp_net/MyFirstMVCApp/MyFirstMVCApp/Areas/Identity/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/keeper/ItStep/pv31_32/asp_net/MyFirstMVCApp/MyFirstMVCApp/Views/CarColor/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2FyQ29sb3IvQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -104,6 +124,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/home/keeper/ItStep/pv31_32/asp_net/MyFirstMVCApp/MyFirstMVCApp/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/keeper/ItStep/pv31_32/asp_net/MyFirstMVCApp/MyFirstMVCApp/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/keeper/ItStep/pv31_32/asp_net/MyFirstMVCApp/MyFirstMVCApp/Views/Shared/_ValidationScriptsPartial.cshtml]

@@ -1,9 +1,10 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using MyFirstMVCApp.Entities;
 
 namespace MyFirstMVCApp.Db;
 
-public class SqLiteDbContext : DbContext
+public class SqLiteDbContext : IdentityDbContext
 {
     public DbSet<ManufacturerEntity> Manufacturers { get; set; }
     

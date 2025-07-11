@@ -13,6 +13,14 @@
       "PackagePath": "staticwebassets/favicon.ico"
     },
     {
+      "Id": "/home/keeper/ItStep/pv31_32/asp_net/MyFirstMVCApp/MyFirstMVCApp/wwwroot/images/.gitignore",
+      "PackagePath": "staticwebassets/images/.gitignore"
+    },
+    {
+      "Id": "/home/keeper/ItStep/pv31_32/asp_net/MyFirstMVCApp/MyFirstMVCApp/wwwroot/images/carcolors/a3bff2e8-9046-4d2b-83c5-ffb8be1927a8_avatar3.gif",
+      "PackagePath": "staticwebassets/images/carcolors/a3bff2e8-9046-4d2b-83c5-ffb8be1927a8_avatar3.gif"
+    },
+    {
       "Id": "/home/keeper/ItStep/pv31_32/asp_net/MyFirstMVCApp/MyFirstMVCApp/wwwroot/js/site.js",
       "PackagePath": "staticwebassets/js/site.js"
     },
