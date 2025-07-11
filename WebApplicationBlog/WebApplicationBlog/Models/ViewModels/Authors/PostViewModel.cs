@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Http;
 
 namespace WebApplicationBlog.Models.ViewModels.Authors;
 
@@ -12,7 +10,8 @@ public class PostViewModel
 
     [Required]
     [StringLength(256, ErrorMessage = "Slug must be less than 256 characters.")]
-    [RegularExpression(@"^[a-z0-9-_]+$", ErrorMessage = "Slug can contain only lowercase letters, numbers, hyphens, and underscores.")]
+    [RegularExpression(@"^[a-z0-9-_]+$",
+        ErrorMessage = "Slug can contain only lowercase letters, numbers, hyphens, and underscores.")]
     public string Slug { get; set; }
 
     [Required(ErrorMessage = "Content is required.")]
@@ -21,7 +20,7 @@ public class PostViewModel
     [Required(ErrorMessage = "Category is required.")]
     public int CategoryId { get; set; }
 
-    public List<int> TagIds { get; set; } = new List<int>();
+    public List<int> TagIds { get; set; } = new();
 
     public bool IsPublished { get; set; } = false;
 

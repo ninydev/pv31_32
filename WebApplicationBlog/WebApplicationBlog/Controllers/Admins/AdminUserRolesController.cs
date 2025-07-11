@@ -1,8 +1,9 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using WebApplicationBlog.Models;
-using WebApplicationBlog.Models.ViewModels.Admins; // если есть модель User
+using WebApplicationBlog.Models.ViewModels.Admins;
+
+// если есть модель User
 
 namespace WebApplicationBlog.Controllers.Admins;
 
@@ -10,8 +11,8 @@ namespace WebApplicationBlog.Controllers.Admins;
 [Route("admin/user-roles")]
 public class AdminUserRolesController : Controller
 {
-    private readonly UserManager<IdentityUser> _userManager;
     private readonly RoleManager<IdentityRole> _roleManager;
+    private readonly UserManager<IdentityUser> _userManager;
 
     public AdminUserRolesController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
     {
@@ -35,6 +36,7 @@ public class AdminUserRolesController : Controller
                 Roles = roles.ToList()
             });
         }
+
         return View(userRolesView);
     }
 
@@ -96,10 +98,7 @@ public class AdminUserRolesController : Controller
         if (user == null) return NotFound();
 
         var result = await _userManager.RemoveFromRoleAsync(user, roleName);
-        if (!result.Succeeded)
-        {
-            return BadRequest("Failed to remove role");
-        }
+        if (!result.Succeeded) return BadRequest("Failed to remove role");
         return RedirectToAction(nameof(Index));
     }
 
@@ -122,7 +121,3 @@ public class AdminUserRolesController : Controller
 }
 
 // Вспомогательные модели для View
-
-
-
-

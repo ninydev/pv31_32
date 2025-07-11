@@ -1,5 +1,4 @@
-﻿@using WebApplicationBlog.Models.Entities
-@model IEnumerable<WebApplicationBlog.Models.Entities.PostModel>
+﻿@model IEnumerable<WebApplicationBlog.Models.Entities.PostModel>
 
 @{
     ViewData["Title"] = "Blog Page";
@@ -7,29 +6,29 @@
 
 <div class="text-center">
     <h1 class="display-4">My Blog</h1>
-    
+
     <section>
-    
-    @foreach(PostModel post in Model)
-    {
-        <article class="post">
-            <header>
-                <h2>@post.Title</h2>
-                <img src="@post.Thumbnail" alt="@post.Title" />
-            </header>
-            <div>
-                <p>@Html.Raw(post.Content)</p>
-            </div>
-            
-            <footer>
-                <p><strong>Category:</strong> @post.Category</p>
-                <p><strong>Created At:</strong> @post.CreatedAt.ToString("g")</p>
-                <p><strong>Updated At:</strong> @post.UpdatedAt.ToString("g")</p>
-                <p><strong>View Count:</strong> @post.ViewCount</p>
-                <p><strong>Comment Count:</strong> @post.CommentCount</p>
-            </footer>
-            <hr/>
-        </article>
-    }
+
+        @foreach (var post in Model)
+        {
+            <article class="post">
+                <header>
+                    <h2>@post.Title</h2>
+                    <img src="@post.Thumbnail" alt="@post.Title" width="100"/>
+                </header>
+                <div>
+                    <p>@Html.Raw(post.Content)</p>
+                </div>
+
+                <footer>
+                    <p><strong>Category:</strong> @post.Category</p>
+                    <p><strong>Created At:</strong> @post.CreatedAt.ToString("g")</p>
+                    <p><strong>Updated At:</strong> @post.UpdatedAt.ToString("g")</p>
+                    <p><strong>View Count:</strong> @post.ViewCount</p>
+                    <p><strong>Comment Count:</strong> @post.CommentCount</p>
+                </footer>
+                <hr/>
+            </article>
+        }
     </section>
 </div>

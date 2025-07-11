@@ -4,5 +4,50 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <div>
+        <input id="search" type="text" placeholder="Search..."/>
+        <span id="echoQuery"></span>
+    </div>
+    <div>
+        <ul id="searchResults" class="list-group">
+            
+        </ul>
+    </div>
 </div>
+
+@section Scripts{
+    <script>
+        
+        const searchInput = document.getElementById("search");
+        const echoQuery = document.getElementById("echoQuery");
+        const searchResults = document.getElementById("searchResults");
+
+        searchInput.addEventListener("input", function () {
+            const query = searchInput.value.toLowerCase();
+            echoQuery.innerHTML = query;
+            
+            if (query.length < 3) {
+                searchResults.innerHTML = "<li class='list-group-item'>Please enter at least 3 characters</li>";
+                return;
+            }
+            
+            fetch("/api/search/posts?query=" + query)
+                .then(response => response.json())
+                .then(data => {
+                    searchResults.innerHTML = "";
+                    data.forEach(post => {
+                        const li = document.createElement("li");
+                        li.classList.add("list-group-item");
+                        li.innerHTML = post.title;
+                        searchResults.appendChild(li);
+                    });
+                })
+                .catch(error => {
+                    console.error("Error fetching search results:", error);
+                    searchResults.innerHTML = "<li class='list-group-item text-danger'>Error fetching results</li>";
+                });
+
+        });
+        
+    </script>
+}

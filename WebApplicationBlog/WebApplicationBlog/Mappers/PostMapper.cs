@@ -1,4 +1,3 @@
-using System.Linq;
 using WebApplicationBlog.Models.Entities;
 using WebApplicationBlog.Models.ViewModels.Authors;
 
