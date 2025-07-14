@@ -69,7 +69,20 @@
                     slug: document.getElementById('tagSlug').value || null
                 })
             });
+            
+            console.log("Response", response);
+            
             if (!response.ok) {
+                //let errorText = await response.text();
+                let errorJson = "noJson";
+                try {
+                    errorJson = await response.json();
+                } catch (e) {
+                    console.error("Failed to parse error JSON", e);
+                }
+                //console.log("ErrorText", errorText);
+                console.log("ErrorJson", errorJson);
+                
                 throw new Error('Network response was not ok');
             }
             const newTag = await response.json();

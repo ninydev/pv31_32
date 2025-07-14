@@ -7,7 +7,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApplicationBlog.Data;
+using WebApplicationBlog.Mappers;
 using WebApplicationBlog.Models.Entities;
+using WebApplicationBlog.Models.ViewModels.Admins;
 
 namespace WebApplicationBlog.Controllers.Admins.Api
 {
@@ -78,12 +80,21 @@ namespace WebApplicationBlog.Controllers.Admins.Api
         // POST: api/ApiAdminTags
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<TagModel>> PostTagModel(TagModel tagModel)
+        public async Task<ActionResult<TagModel>> PostTagModel(TagViewModel tagModel)
         {
-            _context.Tags.Add(tagModel);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetTagModel", new { id = tagModel.Id }, tagModel);
+            if (tagModel == null)
+            {
+                return BadRequest("Tag model cannot be null.");
+            }
+            
+            if (ModelState.IsValid)
+            {
+                TagModel t = TagMapper.ToEntity(tagModel);
+                _context.Tags.Add(t);
+                await _context.SaveChangesAsync();
+                return CreatedAtAction("GetTagModel", new { id = t.Id }, t);
+            }
+            return ValidationProblem(ModelState);
         }
 
         // DELETE: api/ApiAdminTags/5
