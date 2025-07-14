@@ -6,8 +6,23 @@
 <div class="text-center">
     <h1 class="display-4">Admin Tags</h1>
     <ul id="tagsList">
-        
     </ul>
+    
+    <div>
+        <form name="tagForm" id="tagForm">
+            <div class="form-group">
+                <label for="tagName">Tag Name</label>
+                <input type="text" class="form-control" id="tagName" name="tagName" required>
+            </div>
+            <div class="form-group">
+                <label for=""></label>
+                <input type="text" class="form-control" id="tagSlug" name="tagSlug" placeholder="Tag Slug (optional)">
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary"/>
+            </div>
+        </form>
+    </div>
 </div>
 
 @section Scripts 
@@ -40,6 +55,37 @@
             console.error('Error fetching tags:', error);
         }
     };
+    
+    
+    const createTag = async () => {
+        try {
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: document.getElementById('tagName').value,
+                    slug: document.getElementById('tagSlug').value || null
+                })
+            });
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const newTag = await response.json();
+            tags.push(newTag);
+            buildTagsList();
+        } catch (error) {
+            console.error('Error creating tag:', error);
+        }
+    };
+    
+    document.getElementById('tagForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        createTag();
+        this.reset(); // Reset the form after submission
+    });
+    
     
     readTags();
     
