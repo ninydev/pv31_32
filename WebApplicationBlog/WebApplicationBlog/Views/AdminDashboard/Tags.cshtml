@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Admin Dashboard";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Admin Tags</h1>
+    <ul id="tagsList">
+        
+    </ul>
+</div>
+
+@section Scripts 
+{
+<script>
+    
+    const tagsList = document.getElementById('tagsList');
+    const apiUrl = '/api/v1/admin/tags';
+    
+    let tags = [];
+    
+    const buildTagsList = () => {
+        tagsList.innerHTML = '';
+        tags.forEach(tag => {
+            const li = document.createElement('li');
+            li.textContent = `${tag.name} (${tag.slug})`;
+            tagsList.appendChild(li);
+        });
+    };
+    
+    const readTags = async () => {
+        try {
+            const response = await fetch(apiUrl);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            tags = await response.json();
+            tagsList.innerHTML = '';
+            buildTagsList();
+        } catch (error) {
+            console.error('Error fetching tags:', error);
+        }
+    };
+    
+    readTags();
+    
+</script>
+}

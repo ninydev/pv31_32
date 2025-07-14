@@ -18,6 +18,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <Folder Include="Controllers\Admins\Api\" />
         <Folder Include="Controllers\Authors\"/>
         <Folder Include="Views\Admin\"/>
         <Folder Include="wwwroot\storage\posts\"/>
