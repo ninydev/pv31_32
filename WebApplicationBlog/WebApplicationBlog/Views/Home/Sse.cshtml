@@ -7,6 +7,10 @@
     
     <div>
         <h2> Public SSE</h2>
+        <div>
+            <input type="text" id="messagePublic" placeholder="Message" />
+            <button id="sendPublic" class="btn btn-primary">Send</button>
+        </div>
         <ul id="ssePublic" class="list-group">
 
         </ul>
@@ -17,6 +21,26 @@
 
 @section Scripts{
     <script>
+        
+        document.getElementById("sendPublic").addEventListener("click", function () {
+            const message = document.getElementById("messagePublic").value;
+            if (message) {
+                fetch("/msg/public", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(message)
+                })
+                .then(response => response.text())
+                .then(data => {
+                    console.log("Message sent:", data);
+                    document.getElementById("messagePublic").value = ""; // Clear input
+                })
+                .catch(error => console.error("Error sending message:", error));
+            }
+        });
+        
         const ssePublic = document.getElementById("ssePublic");
         
         const addMessageToPublicList = (message) => {
