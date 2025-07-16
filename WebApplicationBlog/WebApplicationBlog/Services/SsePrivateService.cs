@@ -2,13 +2,28 @@ using System.Text;
 
 namespace WebApplicationBlog.Services;
 
-public class SsePublicService
+class SseClient
 {
+    public Guid UserId { get; } // Идентификатор пользователя
+    public Guid ClientId { get; } // Идентификатор клиента (открытого окна, устройства и т.д.)
+    public StreamWriter Writer { get; } // Поток для записи данных в клиент
+
+    public SseClient(Guid userId, Guid clientId, Stream stream)
+    {
+        UserId = userId;
+        ClientId = clientId;
+        Writer = new StreamWriter(stream, Encoding.UTF8, leaveOpen: true);
+    }
+}
+
+public class SsePrivateService
+{
+    private readonly Dictionary<Guid, StreamWriter> _clientsByUserId = new();
     private readonly Dictionary<Guid, StreamWriter> _clients = new();
     private readonly object _lock = new();
 
     // Добавить нового клиента
-    public void AddClient(Guid clientId, Stream stream)
+    public void AddClient(Guid userId, Guid clientId, Stream stream)
     {
         var writer = new StreamWriter(stream, leaveOpen: true);
         lock (_lock)
