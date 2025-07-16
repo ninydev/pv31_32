@@ -84,17 +84,28 @@ namespace WebApplicationBlog.Controllers.Admins.Api
         {
             if (tagModel == null)
             {
-                return BadRequest("Tag model cannot be null.");
+                return BadRequest("Tag model cannot be null."); //400 
             }
             
             if (ModelState.IsValid)
             {
                 TagModel t = TagMapper.ToEntity(tagModel);
-                _context.Tags.Add(t);
-                await _context.SaveChangesAsync();
-                return CreatedAtAction("GetTagModel", new { id = t.Id }, t);
+                
+                
+                try
+                {
+                    _context.Tags.Add(t);
+                    await _context.SaveChangesAsync();
+                }
+                catch (Exception ex)
+                {
+                    return StatusCode(StatusCodes.Status500InternalServerError, $"Error saving tag: {ex.Message}"); // 500
+                }
+                
+                
+                return CreatedAtAction("GetTagModel", new { id = t.Id }, t); // 201 Created
             }
-            return ValidationProblem(ModelState);
+            return ValidationProblem(ModelState); // 400
         }
 
         // DELETE: api/ApiAdminTags/5

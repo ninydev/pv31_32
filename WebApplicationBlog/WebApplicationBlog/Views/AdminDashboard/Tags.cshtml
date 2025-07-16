@@ -34,13 +34,33 @@
     
     let tags = [];
     
-    const buildTagsList = () => {
+    const renderTagsList = () => {
         tagsList.innerHTML = '';
         tags.forEach(tag => {
+            renderTag(tag);
+        });
+    };
+    
+    const pushTag = (tag) => {
+        tags.push(tag);
+        renderTag(tag);
+    };
+    
+    const renderTag = (tag) => {
             const li = document.createElement('li');
             li.textContent = `${tag.name} (${tag.slug})`;
+            li.id = "TAG_ID_" + tag.id;
+            
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.className = 'btn btn-danger btn-sm ml-2';
+            deleteButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                deleteTag(tag.id);
+            });
+            
+            li.appendChild(deleteButton);
             tagsList.appendChild(li);
-        });
     };
     
     const readTags = async () => {
@@ -50,12 +70,11 @@
                 throw new Error('Network response was not ok');
             }
             tags = await response.json();
-            buildTagsList();
+            renderTagsList();
         } catch (error) {
             console.error('Error fetching tags:', error);
         }
     };
-    
     
     const createTag = async () => {
         try {
@@ -86,10 +105,29 @@
                 throw new Error('Network response was not ok');
             }
             const newTag = await response.json();
-            tags.push(newTag);
-            buildTagsList();
+            pushTag(newTag);
+            
         } catch (error) {
             console.error('Error creating tag:', error);
+        }
+    };
+    
+    const deleteTag = async (tagId) => {
+        try {
+            const response = await fetch(`${apiUrl}/${tagId}`, {
+                method: 'DELETE'
+            });
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            tags = tags.filter(tag => tag.id !== tagId);
+            const tagElement = document.getElementById(`TAG_ID_${tagId}`);
+            if (tagElement) {
+                tagElement.remove();
+            }
+            // renderTagsList();
+        } catch (error) {
+            console.error('Error deleting tag:', error);
         }
     };
     

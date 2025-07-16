@@ -140,6 +140,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/keeper/ItStep/pv31_32/WebApplicationBlog/WebApplicationBlog/Views/Home/Sse.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Tc2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/keeper/ItStep/pv31_32/WebApplicationBlog/WebApplicationBlog/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
