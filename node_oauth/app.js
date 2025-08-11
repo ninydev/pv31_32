@@ -17,7 +17,8 @@ const GOOGLE_REDIRECT_URI = process.env.GOOGLE_AUTH_REDIRECT_URI; // Redirect UR
 
 // 4) Перевіряємо наявність обовʼязкових змінних середовища
 if (!GOOGLE_CLIENT_ID || !GOOGLE_CLIENT_SECRET || !GOOGLE_REDIRECT_URI) {
-  console.error('Помилка конфігурації: Перевірте .env — відсутні GOOGLE_AUTH_CLIENT_ID, GOOGLE_AUTH_CLIENT_SECRET або GOOGLE_AUTH_REDIRECT_URI');
+  // Використовуємо файл-логер замість консолі
+  require('./utils/logger').error('Помилка конфігурації: Перевірте .env — відсутні GOOGLE_AUTH_CLIENT_ID, GOOGLE_AUTH_CLIENT_SECRET або GOOGLE_AUTH_REDIRECT_URI');
   process.exit(1);
 }
 
@@ -50,6 +51,15 @@ passport.use(
 const app = express();
 app.use(passport.initialize());
 
+// 6.1) Глобальні обробники необроблених помилок — щоб не загубити їх у консолі
+const logger = require('./utils/logger');
+process.on('uncaughtException', (err) => {
+  logger.error('uncaughtException', { error: String(err), stack: err && err.stack });
+});
+process.on('unhandledRejection', (reason) => {
+  logger.error('unhandledRejection', { reason: String(reason) });
+});
+
 // 7) Підключаємо маршрути
 const authRoutes = require('./routes/auth'); // Маршрути авторизації
 const homeRoutes = require('./routes/home'); // Головна сторінка
@@ -57,7 +67,21 @@ const homeRoutes = require('./routes/home'); // Головна сторінка
 app.use('/auth', authRoutes);
 app.use('/', homeRoutes);
 
+app.use((req, res, next) => {
+  const start = Date.now();
+  res.on('finish', () => {
+    const duration = Date.now() - start;
+    logger.info('HTTP', {
+      method: req.method,
+      url: req.originalUrl || req.url,
+      status: res.statusCode,
+      durationMs: duration,
+    });
+  });
+  next();
+});
+
 // 8) Запускаємо сервер на вказаному порту
 app.listen(PORT, () => {
-  console.log(`Сервер запущено на порту ${PORT}. Відкрийте http://localhost:${PORT}`);
+  logger.info(`Сервер запущено на порту ${PORT}. Відкрийте http://localhost:${PORT}`);
 });
