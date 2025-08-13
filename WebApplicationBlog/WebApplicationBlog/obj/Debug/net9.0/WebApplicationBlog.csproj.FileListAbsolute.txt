@@ -431,3 +431,4 @@
 /home/keeper/ItStep/pv31_32/WebApplicationBlog/WebApplicationBlog/obj/Debug/net9.0/compressed/8w8ejikg0v-fp2zhmawh7.gz
 /home/keeper/ItStep/pv31_32/WebApplicationBlog/WebApplicationBlog/obj/Debug/net9.0/compressed/skaqlubi4e-rqdqh57jw1.gz
 /home/keeper/ItStep/pv31_32/WebApplicationBlog/WebApplicationBlog/obj/Debug/net9.0/compressed/w5v9sdhz0n-rqdqh57jw1.gz
+/home/keeper/ItStep/pv31_32/WebApplicationBlog/WebApplicationBlog/bin/Debug/net9.0/Microsoft.AspNetCore.Authentication.Google.dll
