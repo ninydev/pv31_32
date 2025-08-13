@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Identity;
@@ -48,6 +49,14 @@ builder.Services.AddRazorPages();
 
 // Добавляем singleton сервис для управления SSE-потоком
 builder.Services.AddSingleton<SsePublicService>();
+builder.Services.AddScoped<PostService>();
+
+// Или для MVC контроллеров:
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+    });
 
 
 var app = builder.Build();
