@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<info>
+    <name type="string">Any Files</name>
+    <description>Allows you to upload any type of file.</description>
+    <version>1.0.0</version>
+    <author>Your Name</author>
+    <email></email>
+    <url></url>
+    <license>MIT</license>
+    <compatibility>4.0.0+</compatibility>
+    <release-date>2024-06-20</release-date>
+</info>
