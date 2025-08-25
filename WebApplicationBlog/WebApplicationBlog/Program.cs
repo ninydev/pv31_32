@@ -50,6 +50,10 @@ builder.Services.AddRazorPages();
 // Добавляем singleton сервис для управления SSE-потоком
 builder.Services.AddSingleton<SsePublicService>();
 builder.Services.AddScoped<PostService>();
+// Добавляем репозиторий для работы с постами
+builder.Services.AddScoped<
+    WebApplicationBlog.Repositories.Interfaces.IPostRepository, 
+    WebApplicationBlog.Repositories.Fakes.FakePostRepository>();
 
 // Или для MVC контроллеров:
 builder.Services.AddControllers()

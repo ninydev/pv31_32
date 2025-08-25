@@ -24,7 +24,7 @@ public class ApiGuestController: Controller
     [HttpGet("api/guest/posts")]
     public async Task<IActionResult> GetPosts()
     {
-        var posts = _postService.GetPosts();
+        var posts = await _postService.GetPosts();
         return Ok(posts);
     }
     

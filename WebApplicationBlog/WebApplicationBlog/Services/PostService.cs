@@ -1,28 +1,24 @@
 using Microsoft.EntityFrameworkCore;
 using WebApplicationBlog.Data;
 using WebApplicationBlog.Models.Entities;
+using WebApplicationBlog.Repositories;
+using WebApplicationBlog.Repositories.Interfaces;
 
 namespace WebApplicationBlog.Services;
 
 public class PostService
 {
     
-    private readonly ApplicationDbContext _context;
+    private readonly IPostRepository _postRepository;
     
-    public PostService(ApplicationDbContext context)
+    public PostService(IPostRepository postRepository)
     {
-        _context = context;
+        _postRepository = postRepository;
     }
     
     public async Task<List<PostModel>> GetPosts()
     {
-        var posts = await _context.Posts
-            .Include(p => p.Category)
-            .Include(p => p.Tags)
-            .Include(p => p.Comments)
-            .OrderByDescending(p => p.CreatedAt)
-            .ToListAsync();
-        
+        var posts = await _postRepository.GetPosts();
         return posts;
     }
 }
