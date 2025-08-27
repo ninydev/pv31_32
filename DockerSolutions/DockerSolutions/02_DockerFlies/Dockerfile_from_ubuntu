@@ -1,0 +1,42 @@
+﻿FROM ubuntu:24.04
+# Используем официальный базовый образ Ubuntu 24.04
+# Документация: https://hub.docker.com/_/ubuntu
+
+RUN apt update && apt upgrade -y
+# Обновляем индекс пакетов и устанавливаем последние обновления для всех пакетов
+# Документация по apt update: https://wiki.debian.org/apt
+# Документация по apt upgrade: https://wiki.debian.org/apt
+
+RUN apt install mc -y
+# Устанавливаем Midnight Commander (mc) — удобный файловый менеджер для терминала
+# Документация по mc: https://midnight-commander.org/
+# Документация по apt install: https://wiki.debian.org/apt
+
+RUN apt install git -y
+# Устанавливаем Git — систему контроля версий
+# Документация по git: https://git-scm.com/
+
+RUN apt install curl -y
+# Устанавливаем curl для загрузки Node.js
+
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && apt install nodejs -y
+# Устанавливаем Node.js v22
+# Документация по Node.js: https://nodejs.org/
+
+RUN npm install -g npm@latest && npm install -g yarn
+# Обновляем npm до последней версии и устанавливаем Yarn
+# Документация по npm: https://docs.npmjs.com/
+# Документация по Yarn: https://yarnpkg.com/        
+
+
+RUN apt install wget -y
+# Устанавливаем wget для загрузки dotnet
+
+RUN wget https://packages.microsoft.com/config/ubuntu/24.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb \
+    && dpkg -i packages-microsoft-prod.deb \
+    && rm packages-microsoft-prod.deb
+RUN apt update && apt install dotnet-sdk-8.0 -y
+# Устанавливаем .NET SDK 8
+# Документация по .NET: https://learn.microsoft.com/dotnet/core/install/linux
+
+
