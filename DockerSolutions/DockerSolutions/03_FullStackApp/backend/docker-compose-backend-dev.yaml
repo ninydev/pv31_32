@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  backend:
+    container_name: backend-dev
+    build:
+      context: .
+      dockerfile: Dockerfile_dev
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: ${ASPNETCORE_URLS:-http://0.0.0.0:5001}
+      UPLOAD_FOLDER: ${UPLOAD_FOLDER:-/app/uploads}
+    # volumes:
+      # Исходники (для hot-reload с dotnet watch)
+      # - ./src:/src
+      # Папка загрузок, чтобы файлы сохранялись на хосте
+      # - ./uploads:/app/uploads
+    ports:
+      - "5001:5001"
+      - "7037:7037"
+    # Удобно для dev-сценариев (перезапуск при сбое)
+    restart: unless-stopped
