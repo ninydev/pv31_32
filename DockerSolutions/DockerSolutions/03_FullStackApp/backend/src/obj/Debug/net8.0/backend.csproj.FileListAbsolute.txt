@@ -142,3 +142,7 @@
 /home/keeper/ItStep/pv31_32/DockerSolutions/DockerSolutions/03_FullStackApp/backend/src/obj/Debug/net8.0/backend.pdb
 /home/keeper/ItStep/pv31_32/DockerSolutions/DockerSolutions/03_FullStackApp/backend/src/obj/Debug/net8.0/backend.genruntimeconfig.cache
 /home/keeper/ItStep/pv31_32/DockerSolutions/DockerSolutions/03_FullStackApp/backend/src/obj/Debug/net8.0/ref/backend.dll
+/home/keeper/ItStep/pv31_32/DockerSolutions/DockerSolutions/03_FullStackApp/backend/src/bin/Debug/net8.0/Microsoft.OpenApi.dll
+/home/keeper/ItStep/pv31_32/DockerSolutions/DockerSolutions/03_FullStackApp/backend/src/bin/Debug/net8.0/Swashbuckle.AspNetCore.Swagger.dll
+/home/keeper/ItStep/pv31_32/DockerSolutions/DockerSolutions/03_FullStackApp/backend/src/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/home/keeper/ItStep/pv31_32/DockerSolutions/DockerSolutions/03_FullStackApp/backend/src/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerUI.dll

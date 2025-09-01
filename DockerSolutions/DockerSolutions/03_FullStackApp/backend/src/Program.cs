@@ -31,10 +31,83 @@ builder.Services.AddCors(options =>
     });
 });
 
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(c =>
+{
+    // Базовая инфа о вашем API
+    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "My API",
+        Version = "v1",
+        Description = "Документация к API",
+        Contact = new Microsoft.OpenApi.Models.OpenApiContact
+        {
+            Name = "Team",
+            Email = "team@example.com"
+        }
+    });
+
+    // XML комментарии
+    var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = System.IO.Path.Combine(AppContext.BaseDirectory, xmlFile);
+    if (System.IO.File.Exists(xmlPath))
+    {
+        c.IncludeXmlComments(xmlPath, includeControllerXmlComments: true);
+    }
+
+    // Если используете аннотации [SwaggerOperation], [SwaggerSchema] и т.п.
+    // c.EnableAnnotations();
+
+    // Если используете авторизацию через Bearer (JWT) — раскомментируйте:
+    /*
+    var securityScheme = new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
+        Scheme = "bearer",
+        BearerFormat = "JWT",
+        In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+        Description = "Введите JWT токен в формате: Bearer {token}"
+    };
+    c.AddSecurityDefinition("Bearer", securityScheme);
+    c.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
+    {
+        {
+            securityScheme,
+            Array.Empty<string>()
+        }
+    });
+    */
+});
+
+
 
 var app = builder.Build();
 
 app.UseCors("SseCors");
+
+// Включаем Swagger в Dev; (можно и всегда, если нужно)
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "My API v1");
+        options.RoutePrefix = "swagger"; // страница будет доступна по /swagger
+    });
+}
+else
+{
+    // Чтобы Swagger работал и в проде — можно включить и здесь:
+    app.UseSwagger();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "My API v1");
+        options.RoutePrefix = "swagger";
+    });
+}
+
 
 
 // Configure the HTTP request pipeline.
