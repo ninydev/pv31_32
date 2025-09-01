@@ -15,7 +15,27 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
+// Регистрируем CORS-политику для SSE
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("SseCors", policy =>
+    {
+        policy
+            .WithOrigins(
+                "http://localhost:3000",
+                "http://127.0.0.1:3000"
+            )
+            .AllowAnyHeader()
+            .WithMethods("GET", "OPTIONS")
+            .AllowCredentials();
+    });
+});
+
+
 var app = builder.Build();
+
+app.UseCors("SseCors");
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -1,0 +1,20 @@
+﻿# Базовий образ для запуску ASP\.NET Core додатку
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS base
+
+# Відкриваємо порти 8080 та 8081 для доступу до додатку
+EXPOSE 5001
+EXPOSE 7037
+
+# Встановлюємо робочу директорію для збірки
+WORKDIR /src
+
+# Копируем только csproj для кешируемого restore
+COPY ./src/backend.csproj .
+
+# Восстанавливаем зависимости
+RUN dotnet restore
+
+# Копируем исходники 
+COPY ./src/ .
+
+CMD ["dotnet", "watch", "run"]
