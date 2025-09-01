@@ -24,8 +24,17 @@ const ServerTimeToastify: React.FC = () => {
             lastPayloadRef.current = e.data;
 
             try {
-                const payload = JSON.parse(e.data) as { time?: string; [k: string]: unknown };
-                const time = payload.time ?? e.data;
+                const payload = JSON.parse(e.data) as { time?: string | number; [k: string]: unknown };
+                const raw = payload.time ?? e.data;
+
+                // Пробуем интерпретировать как число (сек/мс) или как строку даты (ISO и т.д.)
+                const n = typeof raw === 'number' ? raw : Number(raw);
+                const date = Number.isFinite(n)
+                    ? new Date(n > 1e12 ? n : n * 1000) // простая эвристика: 10 цифр — секунды, 13 — миллисекунды
+                    : new Date(String(raw));
+
+                const time = isNaN(date.getTime()) ? String(raw) : date.toLocaleString();
+
                 toast.info(`Server time: ${time}`, {
                     position: 'top-left',
                     autoClose: 3000,

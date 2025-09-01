@@ -5,6 +5,9 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS base
 EXPOSE 5001
 EXPOSE 7037
 
+# ВАЖНО: слушать на всех интерфейсах в контейнере
+ENV ASPNETCORE_URLS=http://0.0.0.0:5001
+
 # Встановлюємо робочу директорію для збірки
 WORKDIR /src
 
@@ -17,4 +20,8 @@ RUN dotnet restore
 # Копируем исходники 
 COPY ./src/ .
 
-CMD ["dotnet", "watch", "run"]
+# Запуск в режиме watch для разработки
+CMD ["dotnet", "watch", "run", "--no-launch-profile"]
+
+
+# CMD ["dotnet", "watch", "run"]
