@@ -8,6 +8,13 @@ using Microsoft.AspNetCore.Mvc;
 [Route("api/[controller]")]
 public class UploadFileController : ControllerBase
 {
+    private readonly string _contentRootPath;
+
+    public UploadFileController(Microsoft.AspNetCore.Hosting.IWebHostEnvironment env)
+    {
+        _contentRootPath = env.ContentRootPath;
+    }
+
     /// Загружает файл.
     /// </summary>
     /// <remarks>Отправьте multipart/form-data с полем "file".</remarks>
@@ -31,7 +38,7 @@ public class UploadFileController : ControllerBase
         var targetFolder = Environment.GetEnvironmentVariable("UPLOAD_FOLDER");
         if (string.IsNullOrWhiteSpace(targetFolder))
         {
-            return BadRequest("Переменная окружения UPLOAD_FOLDER не задана.");
+            targetFolder = Path.Combine(_contentRootPath, "uploads");
         }
 
         try

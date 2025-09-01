@@ -1,12 +1,20 @@
 ﻿# Базовий образ для запуску ASP\.NET Core додатку
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS base
 
+# Установка mc
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends mc \
+    && rm -rf /var/lib/apt/lists/*
+
+
 # Відкриваємо порти 8080 та 8081 для доступу до додатку
 EXPOSE 5001
 EXPOSE 7037
 
 # ВАЖНО: слушать на всех интерфейсах в контейнере
 ENV ASPNETCORE_URLS=http://0.0.0.0:5001
+# Папка для загрузок по умолчанию (может быть переопределена в docker-compose)
+ENV UPLOAD_FOLDER=/app/uploads
 
 # Встановлюємо робочу директорію для збірки
 WORKDIR /src
