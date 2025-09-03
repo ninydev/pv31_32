@@ -3102,19 +3102,19 @@
     ]
   },
   "packageFolders": {
-    "/home/keeper/.nuget/packages/": {}
+    "/root/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/keeper/ItStep/pv31_32/DockerSolutions/DockerSolutions/03_FullStackApp/backend/src/backend.csproj",
+      "projectUniqueName": "/src/backend.csproj",
       "projectName": "backend",
-      "projectPath": "/home/keeper/ItStep/pv31_32/DockerSolutions/DockerSolutions/03_FullStackApp/backend/src/backend.csproj",
-      "packagesPath": "/home/keeper/.nuget/packages/",
-      "outputPath": "/home/keeper/ItStep/pv31_32/DockerSolutions/DockerSolutions/03_FullStackApp/backend/src/obj/",
+      "projectPath": "/src/backend.csproj",
+      "packagesPath": "/root/.nuget/packages/",
+      "outputPath": "/src/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/keeper/.nuget/NuGet/NuGet.Config"
+        "/root/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -3187,7 +3187,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/home/keeper/.dotnet/sdk/8.0.411/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.412/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
