@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile_dev
+    container_name: dev-nginx-gateway
+    ports:
+      - "80:80"
+    # Важно для Linux: позволяет имени host.docker.internal указывать на хостовую машину
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    # Если нужно, можно пробросить время, локаль и т.д.
+    environment:
+      - TZ=UTC
+    # Если хотите "горячо" править nginx.conf без пересборки образа — раскомментируйте volume
+    # volumes:
+    #   - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    restart: unless-stopped
