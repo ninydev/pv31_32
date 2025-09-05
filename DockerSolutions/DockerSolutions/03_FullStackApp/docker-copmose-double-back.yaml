@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  backend-sunny:
+    container_name: backend-sunny
+    build:
+      context: ./backend/
+      dockerfile: Dockerfile_dev
+    ports:
+      - "5005:5001"
+      - "7037:7037"   
+    environment:
+      SERVER_NAME: SunnyServer
+      
+  backend-jonny:
+    container_name: backend-jonny
+    build:
+      context: ./backend/
+      dockerfile: Dockerfile_dev
+    ports:
+      - "5006:5001"
+      - "7038:7037"
+    environment:
+      SERVER_NAME: JonnyServer    
+      
+  nginx-balance:
+    container_name: nginx-balance
+    image: nginx:latest
+    volumes:
+      - ./nginx-balance.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "80:80"

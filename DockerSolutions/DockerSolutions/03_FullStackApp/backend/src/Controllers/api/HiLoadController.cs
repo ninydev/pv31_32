@@ -14,7 +14,7 @@ public class HiLoadController : ControllerBase
     public async Task<IActionResult> Get(CancellationToken cancellationToken)
     {
         // Имитация долгой обработки: случайная задержка 7-10 секунд
-        int delayMs = Random.Shared.Next(7000, 10001); // верхняя граница эксклюзивна
+        int delayMs = Random.Shared.Next(100, 201); // верхняя граница эксклюзивна
         try
         {
             await Task.Delay(delayMs, cancellationToken);
@@ -32,9 +32,13 @@ public class HiLoadController : ControllerBase
         // Случайный тип ответа
         int idx = Random.Shared.Next(Types.Length);
         var type = Types[idx];
+        
+        var serverName = Environment.GetEnvironmentVariable("SERVER_NAME") ?? "unknown";
+
 
         object value = type switch
         {
+            "ServerName" => serverName,
             "serverTime" => DateTimeOffset.UtcNow,                 // текущее время на сервере (UTC)
             "randomInt"  => Random.Shared.Next(int.MinValue, int.MaxValue),
             "guid"       => Guid.NewGuid(),
@@ -43,8 +47,7 @@ public class HiLoadController : ControllerBase
 
         return Ok(new
         {
-            type,
-            value,
+            serverName,
             delayMs
         });
     }

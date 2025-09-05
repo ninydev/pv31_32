@@ -6,8 +6,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile_dev
-#   environment:
-#      ASPNETCORE_ENVIRONMENT: Development
+    environment:
+      SERVER_NAME: OneCopy
+    
+    #      ASPNETCORE_ENVIRONMENT: Development
 #      ASPNETCORE_URLS: http://0.0.0.0:5001
 #      UPLOAD_FOLDER: /app/uploads
     volumes:

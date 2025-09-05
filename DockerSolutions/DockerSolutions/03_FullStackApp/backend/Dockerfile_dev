@@ -16,6 +16,11 @@ ENV ASPNETCORE_URLS=http://0.0.0.0:5001
 # Папка для загрузок по умолчанию (может быть переопределена в docker-compose)
 ENV UPLOAD_FOLDER=/app/uploads
 
+# Берём значение на этапе сборки и сохраняем в окружение образа
+ARG SERVER_NAME=Unknown
+ENV SERVER_NAME=$SERVER_NAME
+
+
 # Встановлюємо робочу директорію для збірки
 WORKDIR /src
 
