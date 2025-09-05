@@ -6,13 +6,13 @@ services:
     build:
       context: .
       dockerfile: Dockerfile_dev
-    environment:
-      ASPNETCORE_ENVIRONMENT: Development
-      ASPNETCORE_URLS: ${ASPNETCORE_URLS:-http://0.0.0.0:5001}
-      UPLOAD_FOLDER: ${UPLOAD_FOLDER:-/app/uploads}
+#   environment:
+#      ASPNETCORE_ENVIRONMENT: Development
+#      ASPNETCORE_URLS: http://0.0.0.0:5001
+#      UPLOAD_FOLDER: /app/uploads
     volumes:
        # Исходники (для hot-reload с dotnet watch)
-       - ./src:/src
+#       - ./src:/src
        # Папка загрузок, чтобы файлы сохранялись на хосте
        - ./uploads:/app/uploads
     ports:
