@@ -1,0 +1,9 @@
+
+services:
+  frontend:
+    container_name: frontend-dev
+    build:
+      context: .
+      dockerfile: Dockerfile_dev
+    ports:
+      - "5173:5173"
