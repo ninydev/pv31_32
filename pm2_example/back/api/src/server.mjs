@@ -16,7 +16,7 @@ app.use(express.json());
 // Health/root route (optional helpful info)
 app.get('/', (req, res) => {
   res.json({
-    name: process.env.SERVER_NAME || 'ColorsAPI',
+    name: process.env.API_SERVER_NAME || 'ColorsAPI',
     endpoints: ['/colors'],
     status: 'ok'
   });
@@ -31,9 +31,9 @@ app.get('/api/colors', (req, res) => {
   res.json({ colors });
 });
 
-const PORT = Number(process.env.PORT) || 3000;
-const SERVER_NAME = process.env.SERVER_NAME || 'ColorsAPI';
+const API_SERVER_PORT = Number(process.env.API_SERVER_PORT) || 3000;
+const API_SERVER_NAME = process.env.API_SERVER_NAME || 'ColorsAPI';
 
-app.listen(PORT, () => {
-  console.log(`[${SERVER_NAME}] listening on http://localhost:${PORT}`);
+app.listen(API_SERVER_PORT, () => {
+  console.log(`[${API_SERVER_NAME}] listening on http://localhost:${API_SERVER_PORT}`);
 });

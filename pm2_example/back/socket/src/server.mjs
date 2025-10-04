@@ -5,14 +5,14 @@ import { Server } from 'socket.io';
 // Load environment variables from .env
 dotenv.config();
 
-const PORT = Number(process.env.PORT) || 5000;
-const SERVER_NAME = process.env.SERVER_NAME || 'SimpleSocketServer';
+const SOCKER_SERVER_PORT = Number(process.env.SOCKER_SERVER_PORT) || 5000;
+const SOCKET_SERVER_NAME = process.env.SOCKET_SERVER_NAME || 'SimpleSocketServer';
 
 // Basic HTTP server (for health check and to host the Socket.IO upgrade)
 const httpServer = http.createServer((req, res) => {
   if (req.method === 'GET' && req.url === '/') {
     const payload = {
-      name: SERVER_NAME,
+      name: SOCKET_SERVER_NAME,
       status: 'ok',
       socketEndpoints: ['io namespace / (default)'],
     };
@@ -62,6 +62,6 @@ io.on('connection', (socket) => {
   });
 });
 
-httpServer.listen(PORT, () => {
-  console.log(`[${SERVER_NAME}] Socket.IO server listening on http://localhost:${PORT}`);
+httpServer.listen(SOCKER_SERVER_PORT, () => {
+  console.log(`[${SOCKET_SERVER_NAME}] Socket.IO server listening on http://localhost:${SOCKER_SERVER_PORT}`);
 });
