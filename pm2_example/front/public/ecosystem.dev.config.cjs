@@ -4,7 +4,7 @@ module.exports = {
       name: 'front-public-dev',
       cwd: __dirname,
         script: "node_modules/next/dist/bin/next",
-        args: "dev -p 3000",
+        args: "dev -p 3000 -H 0.0.0.0",
       env: {
         NODE_ENV: 'development',
       },

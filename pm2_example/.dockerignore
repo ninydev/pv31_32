@@ -1,0 +1,36 @@
+# Reduce Docker build context size and avoid copying unnecessary files
+
+# Node modules (all services)
+node_modules
+**/node_modules
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build outputs / caches
+.dist
+.dist-ssr
+build
+coverage
+.cache
+.next
+out
+**/.vite
+
+# OS / IDE files
+.DS_Store
+Thumbs.db
+.idea
+.vscode
+
+# VCS
+.git
+.gitignore
+
+# Docker metadata (this file itself is OK to copy or ignore, but excluding reduces noise)
+.dockerignore
