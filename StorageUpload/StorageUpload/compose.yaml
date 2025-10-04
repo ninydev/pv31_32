@@ -1,0 +1,7 @@
+﻿services:
+  storageupload:
+    image: storageupload
+    build:
+      context: .
+      dockerfile: StorageUpload/Dockerfile
+

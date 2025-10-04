@@ -1,0 +1,14 @@
+{
+  "name": "simple-socket-server",
+  "version": "1.0.0",
+  "description": "Simple Socket.IO server that broadcasts join/leave notifications",
+  "type": "module",
+  "main": "src/server.mjs",
+  "scripts": {
+    "start": "node src/server.mjs"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "socket.io": "^4.7.5"
+  }
+}

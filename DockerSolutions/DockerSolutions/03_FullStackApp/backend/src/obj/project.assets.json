@@ -3102,19 +3102,19 @@
     ]
   },
   "packageFolders": {
-    "/root/.nuget/packages/": {}
+    "/home/keeper/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/src/backend.csproj",
+      "projectUniqueName": "/home/keeper/ItStep/pv31_32/DockerSolutions/DockerSolutions/03_FullStackApp/backend/src/backend.csproj",
       "projectName": "backend",
-      "projectPath": "/src/backend.csproj",
-      "packagesPath": "/root/.nuget/packages/",
-      "outputPath": "/src/obj/",
+      "projectPath": "/home/keeper/ItStep/pv31_32/DockerSolutions/DockerSolutions/03_FullStackApp/backend/src/backend.csproj",
+      "packagesPath": "/home/keeper/.nuget/packages/",
+      "outputPath": "/home/keeper/ItStep/pv31_32/DockerSolutions/DockerSolutions/03_FullStackApp/backend/src/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/root/.nuget/NuGet/NuGet.Config"
+        "/home/keeper/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -3132,11 +3132,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -3187,7 +3182,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.412/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.120/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
