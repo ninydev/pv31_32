@@ -3,8 +3,8 @@ module.exports = {
     {
       name: 'front-public-dev',
       cwd: __dirname,
-      script: 'npm',
-      args: 'run dev',
+        script: "node_modules/next/dist/bin/next",
+        args: "dev -p 3000",
       env: {
         NODE_ENV: 'development',
       },

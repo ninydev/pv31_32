@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 });
 
 // Single endpoint that returns available colors
-app.get('/colors', (req, res) => {
+app.get('/api/colors', (req, res) => {
   const colors = [
     'red', 'green', 'blue', 'yellow', 'orange', 'purple', 'pink', 'brown', 'black', 'white',
     'cyan', 'magenta', 'lime', 'teal', 'indigo', 'violet', 'gray', 'silver', 'gold'
