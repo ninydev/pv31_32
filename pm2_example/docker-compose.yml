@@ -15,10 +15,8 @@ services:
       - ./front/public/.env
       - ./front/admin/.env
     ports:
-      - "3000:3000"   # front/public (Next.js dev)
-      - "5173:5173"   # front/admin (Vite dev)
-      - "4000:4000"   # back/api (Express)
-      - "5000:5000"   # back/socket (Socket.IO)
+      - "80:80"     # Nginx reverse proxy (HTTP)
+      - "443:443"   # Nginx reverse proxy (HTTPS, self-signed in dev)
     restart: unless-stopped
     # If you want live-reload while editing files on host, uncomment the volume below
     # and ensure your PM2 watch settings are as desired (backends already watch src/.env)

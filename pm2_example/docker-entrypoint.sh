@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Start Nginx first (it will daemonize by default on Alpine)
+nginx -t && nginx
+
 # Load dotenv files for backend services if present so PORT and other vars are available
 if [ -f "/app/back/api/.env" ]; then
   set -a
